@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Cook Any Bean — A Field Guide</title>
+<meta name="description" content="A generalized, safe method for soaking, cooking, seasoning, and storing dried beans of any kind.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #efeadc;
+    --card: #faf7ee;
+    --ink: #2a2118;
+    --ink-soft: #55493c;
+    --maroon: #7c2e28;
+    --maroon-soft: #a1483f;
+    --olive: #6b6224;
+    --forest: #3e5641;
+    --forest-soft: #5a7a5f;
+    --line: #cfc6ac;
+    --line-soft: #e2dbc7;
+    --max: 760px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--olive); color: var(--paper); }
+
+  a { color: var(--maroon); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { color: var(--maroon-soft); }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--forest);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    margin: 0 0 0.4em;
+  }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Header / hero ---------- */
+
+  header.hero {
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--forest-soft);
+    margin: 0 0 18px;
+    letter-spacing: 0.02em;
+  }
+
+  h1 {
+    font-size: clamp(2.1rem, 5vw, 3.1rem);
+    font-style: normal;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin: 18px 0 0;
+  }
+
+  .pod-row {
+    display: flex;
+    gap: 10px;
+    margin: 30px 0 4px;
+    align-items: center;
+  }
+
+  .pod-row svg { display: block; }
+
+  /* ---------- Index nav ---------- */
+
+  nav.index {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav.index ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    font-size: 14.5px;
+  }
+
+  nav.index li:not(:last-child)::after {
+    content: "·";
+    color: var(--line);
+    margin: 0 10px;
+  }
+
+  nav.index a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  nav.index a:hover { color: var(--maroon); border-bottom-color: var(--maroon); }
+
+  /* ---------- Sections ---------- */
+
+  section { padding: 52px 0; border-bottom: 1px solid var(--line-soft); }
+  section:last-of-type { border-bottom: none; }
+
+  section > .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: var(--forest-soft);
+    margin: 0 0 10px;
+  }
+
+  h2 { font-size: 1.7rem; }
+  h2 + .lede { color: var(--ink-soft); margin-top: -6px; margin-bottom: 26px; max-width: 62ch; }
+
+  /* ---------- Safety callout ---------- */
+
+  .callout {
+    background: var(--card);
+    border-left: 4px solid var(--maroon);
+    padding: 22px 26px;
+    margin: 28px 0 0;
+  }
+
+  .callout h3 {
+    font-size: 1.15rem;
+    color: var(--maroon);
+    margin-bottom: 10px;
+  }
+
+  .callout p { margin: 0 0 12px; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .callout ul { margin: 12px 0; padding-left: 22px; }
+  .callout li { margin-bottom: 6px; }
+
+  /* ---------- Numbered method ---------- */
+
+  .method { counter-reset: step; margin-top: 30px; }
+
+  .step {
+    counter-increment: step;
+    position: relative;
+    padding: 0 0 30px 52px;
+    border-left: 1px solid var(--line);
+    margin-left: 17px;
+  }
+  .step:last-child { border-left-color: transparent; padding-bottom: 0; }
+
+  .step::before {
+    content: counter(step);
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    position: absolute;
+    left: -18px;
+    top: -2px;
+    width: 34px;
+    height: 34px;
+    background: var(--paper);
+    border: 1px solid var(--forest);
+    color: var(--forest);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+
+  .step h3 { font-size: 1.15rem; margin-bottom: 6px; }
+  .step p, .step ul { margin: 0 0 10px; color: var(--ink-soft); }
+  .step p:last-child, .step ul:last-child { margin-bottom: 0; }
+  .step ul { padding-left: 20px; }
+  .step li { margin-bottom: 4px; }
+  .step strong { color: var(--ink); }
+
+  /* ---------- Table ---------- */
+
+  .table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 26px 0 14px;
+  }
+
+  #filter {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    padding: 9px 14px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    border-radius: 3px;
+    min-width: 220px;
+  }
+  #filter::placeholder { color: var(--ink-soft); }
+
+  .table-scroll { overflow-x: auto; border: 1px solid var(--line); }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 620px;
+    font-size: 15px;
+    background: var(--card);
+  }
+
+  thead th {
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--forest);
+    background: var(--paper);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--paper); }
+
+  td.bean-name { font-weight: 600; white-space: nowrap; }
+  td.note { color: var(--ink-soft); font-size: 14px; }
+
+  .flag {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--maroon);
+    border: 1px solid var(--maroon-soft);
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-top: 4px;
+  }
+
+  .table-note {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 14px;
+  }
+
+  /* ---------- Flavor base ---------- */
+
+  .base-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 28px;
+  }
+
+  @media (max-width: 560px) {
+    .base-grid { grid-template-columns: 1fr; }
+  }
+
+  .base-grid h3 {
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--forest);
+    text-transform: none;
+    margin-bottom: 8px;
+  }
+
+  .base-grid ul { margin: 0; padding-left: 20px; color: var(--ink-soft); }
+  .base-grid li { margin-bottom: 6px; }
+  .base-grid li strong { color: var(--ink); }
+
+  /* ---------- Storage ---------- */
+
+  .storage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  @media (max-width: 640px) {
+    .storage-grid { grid-template-columns: 1fr; }
+  }
+
+  .storage-card {
+    border-top: 3px solid var(--olive);
+    padding-top: 14px;
+  }
+
+  .storage-card h3 { font-size: 1.02rem; font-family: 'Inter', sans-serif; font-weight: 600; margin-bottom: 8px; }
+  .storage-card p { color: var(--ink-soft); font-size: 15px; margin: 0; }
+
+  /* ---------- Troubleshooting ---------- */
+
+  .qa { margin-top: 26px; }
+  .qa-item { padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
+  .qa-item:last-child { border-bottom: none; }
+  .qa-item h3 { font-size: 1.02rem; font-family: 'Inter', sans-serif; font-weight: 600; margin-bottom: 6px; }
+  .qa-item p { color: var(--ink-soft); margin: 0; }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    padding: 40px 0 70px;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+  footer a { color: var(--ink-soft); }
+
+  @media print {
+    nav.index, #filter { display: none; }
+    body { background: white; }
+    section { border-bottom: 1px solid #ccc; }
+    .callout { border-left-color: #000; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">A field guide</p>
+    <h1>How to cook any bean</h1>
+    <p class="hero-sub">One method covers almost every dried bean in the pantry — sort, soak, boil, simmer. Below: which beans need soaking, how long each one actually takes, the ten-minute step that makes kidney beans safe to eat, and a plain onion-and-garlic base that works underneath all of it.</p>
+    <div class="pod-row" aria-hidden="true">
+      <svg width="220" height="34" viewBox="0 0 220 34" fill="none">
+        <ellipse cx="17" cy="17" rx="14" ry="10" transform="rotate(-18 17 17)" fill="#7c2e28"/>
+        <ellipse cx="52" cy="17" rx="13" ry="13" fill="#e2dbc7" stroke="#6b6224" stroke-width="1.5"/>
+        <ellipse cx="86" cy="17" rx="15" ry="9" transform="rotate(8 86 17)" fill="#2a2118"/>
+        <ellipse cx="121" cy="17" rx="13" ry="10" transform="rotate(-10 121 17)" fill="#faf7ee" stroke="#3e5641" stroke-width="1.5"/>
+        <ellipse cx="155" cy="17" rx="12" ry="12" fill="#a1483f"/>
+        <ellipse cx="189" cy="17" rx="14" ry="9" transform="rotate(15 189 17)" fill="#6b6224"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<nav class="index" aria-label="Section index">
+  <div class="wrap">
+    <ol>
+      <li><a href="#safety">Safety first</a></li>
+      <li><a href="#method">The master method</a></li>
+      <li><a href="#times">Cooking times by bean</a></li>
+      <li><a href="#base">Flavor base</a></li>
+      <li><a href="#storage">Storage</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+  <section id="safety">
+    <div class="wrap">
+      <p class="eyebrow">Read this part first</p>
+      <h2>Kidney beans need one extra step</h2>
+      <p class="lede">This is the one rule in bean cooking that actually matters for safety, not just texture.</p>
+
+      <div class="callout">
+        <h3>Boil kidney beans hard for 10 minutes before you simmer them</h3>
+        <p>Raw and undercooked <strong>kidney beans</strong> — red and white (cannellini) — contain a natural toxin called phytohaemagglutinin. Eating just a handful of raw or improperly cooked kidney beans can cause severe nausea, vomiting, and diarrhea within a few hours.</p>
+        <ul>
+          <li>After soaking, bring the pot to a full, rolling boil and let it boil <strong>uncovered for at least 10 minutes</strong> before dropping it down to a simmer.</li>
+          <li><strong>Never cook raw or soaked kidney beans in a slow cooker on low heat without pre-boiling them first.</strong> Slow cookers often don't get hot enough to destroy the toxin, and low, prolonged heat can actually concentrate it. If you want to finish them in a slow cooker, boil hard on the stovetop for 10 minutes first, then transfer.</li>
+          <li><strong>Canned kidney beans are already fully cooked and safe</strong> — no extra boiling needed beyond normal reheating.</li>
+        </ul>
+        <p>White (cannellini) beans carry a smaller amount of the same toxin, so the same 10-minute rule is worth applying to them too. It's also just good general practice for any dried bean: a hard boil at the start neutralizes the lower-level lectins that most legumes carry, before you turn the heat down to simmer them tender.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="method">
+    <div class="wrap">
+      <p class="eyebrow">The master method</p>
+      <h2>Five steps, almost any bean</h2>
+      <p class="lede">This is the shape of cooking a pot of beans from dried. The reference table further down fills in the specific times per variety.</p>
+
+      <div class="method">
+        <div class="step">
+          <h3>Sort and rinse</h3>
+          <p>Spread the dry beans out and pick through for small stones, shriveled beans, or debris — bags of dried beans aren't always fully cleaned. Rinse under cold water until it runs clear.</p>
+        </div>
+
+        <div class="step">
+          <h3>Soak (most beans, not all)</h3>
+          <p>Soaking shortens the cooking time and helps beans cook more evenly. Two ways to do it:</p>
+          <ul>
+            <li><strong>Long soak:</strong> cover with cold water, about 3–4 cups of water per cup of beans, and let sit 8–24 hours at room temperature (refrigerate if your kitchen runs warm, or if you're soaking longer than 8 hours). Drain and rinse before cooking.</li>
+            <li><strong>Quick soak:</strong> cover with water, bring to a boil for 2–3 minutes, take off the heat, cover, and let stand for 1 hour. Drain and rinse.</li>
+          </ul>
+          <p>Lentils, split peas, mung beans, and black-eyed peas cook fine with no soak at all — see the table for which is which. Skipping the soak on other beans isn't dangerous, it just means a longer simmer and a bit more gas.</p>
+        </div>
+
+        <div class="step">
+          <h3>Boil hard, then simmer</h3>
+          <p>Cover the soaked beans with fresh water (not the soaking water — this cuts down on the gas-causing compounds that leached out overnight), by about 2 inches. Bring to a full boil for 10 minutes — mandatory for kidney beans, good habit for everything else — then reduce to a gentle simmer, partially covered. Skim off any foam that rises in the first few minutes.</p>
+        </div>
+
+        <div class="step">
+          <h3>Season the pot as it cooks</h3>
+          <p>Add your aromatics (onion, garlic, bay leaf, a glug of oil) at the start of the simmer. Salt is fine to add early — it seasons the beans as they cook and doesn't toughen them. Hold off on anything acidic — tomatoes, vinegar, wine, citrus — until the beans are already tender; acid slows down softening.</p>
+        </div>
+
+        <div class="step">
+          <h3>Check doneness, then rest</h3>
+          <p>A done bean is fully creamy all the way through — no chalky or crunchy center, no raw starchy taste. Start checking at the low end of the time range and taste every 5–10 minutes after that. Letting beans sit in their hot cooking liquid for 10–15 minutes off the heat before serving rounds them out and helps the skins hold together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="times">
+    <div class="wrap">
+      <p class="eyebrow">Reference table</p>
+      <h2>Cooking times by bean</h2>
+      <p class="lede">Simmer times below start once the pot is soaked, boiled hard, and dropped to a simmer. Ranges assume beans bought within the last year; older beans take longer and sometimes never fully soften.</p>
+
+      <div class="table-controls">
+        <label for="filter" style="font-size:14px; color:var(--ink-soft);">Filter the list</label>
+        <input type="text" id="filter" placeholder="Type a bean name…">
+      </div>
+
+      <div class="table-scroll">
+        <table id="bean-table">
+          <thead>
+            <tr>
+              <th>Bean</th>
+              <th>Soaking</th>
+              <th>Simmer time</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="bean-name">Black beans</td>
+              <td>Recommended</td>
+              <td>45–60 min</td>
+              <td class="note">Holds its shape well; skins stay intact.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Pinto beans</td>
+              <td>Recommended</td>
+              <td>60–90 min</td>
+              <td class="note">Softens into a slightly creamy, earthy bean — classic refried-bean texture.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Red kidney beans</td>
+              <td>Required</td>
+              <td>45–60 min <span class="flag">after 10-min boil</span></td>
+              <td class="note">See the safety note above before cooking these.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">White kidney beans (cannellini)</td>
+              <td>Recommended</td>
+              <td>45–60 min <span class="flag">after 10-min boil</span></td>
+              <td class="note">Creamy with a thin skin; good in soups.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Great Northern beans</td>
+              <td>Recommended</td>
+              <td>45–60 min</td>
+              <td class="note">Mild flavor, tender, absorbs seasoning well.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Navy beans</td>
+              <td>Recommended</td>
+              <td>45–60 min</td>
+              <td class="note">Very creamy — the classic baked-bean bean.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Chickpeas (garbanzo)</td>
+              <td>Recommended</td>
+              <td>60–120 min</td>
+              <td class="note">Wide range — check often; stays firmer than most beans even when done.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Black-eyed peas</td>
+              <td>Optional</td>
+              <td>30–45 min soaked, 45–60 min unsoaked</td>
+              <td class="note">Cooks fine straight from dry with no soak.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Lima beans</td>
+              <td>Recommended</td>
+              <td>45–60 min</td>
+              <td class="note">Starchy and soft; breaks down easily if overcooked.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Fava beans (dried, peeled)</td>
+              <td>Required</td>
+              <td>40–50 min</td>
+              <td class="note">Slip the tough outer skins off after soaking, before cooking.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Adzuki beans</td>
+              <td>Optional</td>
+              <td>45–60 min</td>
+              <td class="note">Slightly sweet; cooks fine unsoaked with a bit more time.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Lentils (brown/green)</td>
+              <td>Not needed</td>
+              <td>20–30 min</td>
+              <td class="note">No soak required at all; holds its shape when cooked gently.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Split peas</td>
+              <td>Not needed</td>
+              <td>45–60 min</td>
+              <td class="note">Breaks down into a thick purée — ideal for soup.</td>
+            </tr>
+            <tr>
+              <td class="bean-name">Mung beans</td>
+              <td>Optional</td>
+              <td>30–45 min</td>
+              <td class="note">Soft and mild; soaking shortens the time but isn't required.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Using a pressure cooker or Instant Pot? Skip the soak entirely and expect roughly a third to half the simmer time above at high pressure, with a natural release. Times still vary by machine, so check a couple minutes early the first time you try a new bean.</p>
+    </div>
+  </section>
+
+  <section id="base">
+    <div class="wrap">
+      <p class="eyebrow">Flavor</p>
+      <h2>A base that works under almost any bean</h2>
+      <p class="lede">You don't need a different flavor plan for every variety. This is the ratio to start from, then adjust to taste.</p>
+
+      <div class="base-grid">
+        <div>
+          <h3>Per pound (about 2 cups) of dried beans</h3>
+          <ul>
+            <li><strong>1 onion,</strong> halved or quartered</li>
+            <li><strong>4–6 garlic cloves,</strong> smashed</li>
+            <li><strong>1–2 bay leaves</strong></li>
+            <li><strong>1–2 tbsp oil or fat</strong> (olive oil, butter, rendered bacon fat)</li>
+            <li><strong>Salt,</strong> to taste — fine to add early</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Worth adding, depending on the pot</h3>
+          <ul>
+            <li>A carrot and a rib of celery, for a fuller stock-like base</li>
+            <li>Cumin seed, smoked paprika, or a dried chile</li>
+            <li>A strip of kombu or a parmesan rind, simmered in with the beans</li>
+            <li>A sprig of epazote — traditional with beans, and said to ease digestion</li>
+            <li>Acid at the very end: a splash of vinegar, wine, or a squeeze of citrus</li>
+          </ul>
+        </div>
+      </div>
+      <p class="table-note">Fish out the bay leaf and onion pieces before serving, or mash them into the pot for extra body — either works.</p>
+    </div>
+  </section>
+
+  <section id="storage">
+    <div class="wrap">
+      <p class="eyebrow">Storage</p>
+      <h2>Keeping beans, dry or cooked</h2>
+
+      <div class="storage-grid">
+        <div class="storage-card">
+          <h3>Dry, uncooked</h3>
+          <p>Airtight container, cool and dark. Best texture within a year of purchase; still safe well beyond that, but older beans take longer to soften and sometimes never fully do. Label the container with a date if you can.</p>
+        </div>
+        <div class="storage-card">
+          <h3>Cooked, refrigerated</h3>
+          <p>Cool within 2 hours of cooking, then store in an airtight container, ideally covered in their own cooking liquid so they don't dry out. Good for 3–5 days.</p>
+        </div>
+        <div class="storage-card">
+          <h3>Cooked, frozen</h3>
+          <p>Portion with a little cooking liquid into bags or containers — flat bags thaw fastest. Keeps well for up to 6 months. Reheat from frozen straight into soups and stews, or thaw in the fridge overnight.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="troubleshooting">
+    <div class="wrap">
+      <p class="eyebrow">Troubleshooting</p>
+      <h2>When beans won't cooperate</h2>
+
+      <div class="qa">
+        <div class="qa-item">
+          <h3>They've been simmering forever and are still hard</h3>
+          <p>Almost always means old beans, or hard (mineral-heavy) water. If your tap water is hard, try switching to filtered water, or add a small pinch of baking soda — about ⅛ teaspoon per cup of dry beans — to the pot. Use it sparingly; too much gives a soapy taste and softens the texture more than you want.</p>
+        </div>
+        <div class="qa-item">
+          <h3>Should I salt the water?</h3>
+          <p>Yes — salting early seasons the beans from the inside and doesn't toughen the skins, despite the old advice. What does slow beans down is acid, so keep tomatoes, vinegar, wine, and citrus out of the pot until the beans are already tender.</p>
+        </div>
+        <div class="qa-item">
+          <h3>Do I need to skim the foam?</h3>
+          <p>Not strictly, but it makes for a cleaner-tasting pot and less mess on the stovetop. It's mostly released starch and surface proteins — skim it off in the first several minutes of the boil, then it tapers off on its own.</p>
+        </div>
+        <div class="qa-item">
+          <h3>How do I make them less gassy?</h3>
+          <p>Soak, and discard the soaking water rather than cooking in it. Cook in fresh water. A strip of kombu simmered in the pot is a traditional aid. Beyond that, it's mostly about your gut adjusting — eating beans regularly, in smaller portions at first, tends to help over time.</p>
+        </div>
+        <div class="qa-item">
+          <h3>Does altitude matter?</h3>
+          <p>Yes — water boils at a lower temperature at higher elevation, so beans take noticeably longer above about 3,000 feet. Add extra simmer time and check for doneness rather than trusting the clock alone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>General guidance for home cooking — not a substitute for official food-safety advice. For more on the kidney bean toxin specifically, the FDA and USDA extension services have detailed write-ups worth a search.</p>
+  </div>
+</footer>
+
+<script>
+  const filterInput = document.getElementById('filter');
+  const rows = Array.from(document.querySelectorAll('#bean-table tbody tr'));
+
+  filterInput.addEventListener('input', () => {
+    const q = filterInput.value.trim().toLowerCase();
+    rows.forEach(row => {
+      const name = row.querySelector('.bean-name').textContent.toLowerCase();
+      row.style.display = name.includes(q) ? '' : 'none';
+    });
+  });
+</script>
+
+</body>
+</html>
