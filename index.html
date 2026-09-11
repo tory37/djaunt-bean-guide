@@ -332,6 +332,195 @@
   .qa-item h3 { font-size: 1.02rem; font-family: 'Inter', sans-serif; font-weight: 600; margin-bottom: 6px; }
   .qa-item p { color: var(--ink-soft); margin: 0; }
 
+  /* ---------- Cooking assistant ---------- */
+
+  .btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 3px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+    line-height: 1.2;
+  }
+  .btn:hover { border-color: var(--forest); color: var(--forest); }
+  .btn-primary { background: var(--forest); border-color: var(--forest); color: var(--paper); }
+  .btn-primary:hover { background: var(--forest-soft); border-color: var(--forest-soft); color: var(--paper); }
+  .btn-small { padding: 6px 12px; font-size: 13px; }
+
+  .btn-text-danger {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    background: none;
+    border: none;
+    color: var(--maroon-soft);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+    padding: 6px 4px;
+  }
+  .btn-text-danger:hover { color: var(--maroon); }
+
+  .pot-form {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px;
+    margin-top: 28px;
+  }
+
+  .form-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+  .form-row:last-of-type { margin-bottom: 0; }
+
+  .field { flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px; }
+  .field-grow { flex: 2 1 280px; }
+
+  .field label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--forest);
+  }
+
+  .optional-tag { font-weight: 400; color: var(--ink-soft); font-size: 12px; }
+
+  .field select, .field input[type="text"] {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 3px;
+  }
+
+  .form-actions { display: flex; align-items: center; gap: 18px; margin-top: 20px; flex-wrap: wrap; }
+
+  .pots-empty { color: var(--ink-soft); font-size: 15px; font-style: italic; margin: 28px 0 0; }
+
+  .pots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 22px;
+    margin-top: 28px;
+  }
+
+  .pot-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 22px 22px 18px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pot-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid var(--line-soft);
+    padding-bottom: 14px;
+    margin-bottom: 4px;
+  }
+
+  .pot-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px; }
+
+  .pot-meta { font-size: 12.5px; color: var(--ink-soft); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+  .method-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--forest-soft);
+    color: var(--forest);
+    white-space: nowrap;
+  }
+
+  .pot-remove {
+    background: none;
+    border: none;
+    color: var(--ink-soft);
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    padding: 2px;
+    flex-shrink: 0;
+  }
+  .pot-remove:hover { color: var(--maroon); }
+
+  .pot-progress { font-size: 13px; color: var(--ink-soft); margin: 10px 0 2px; }
+  .pot-progress-bar { background: var(--line-soft); border-radius: 3px; height: 5px; overflow: hidden; margin-top: 6px; }
+  .pot-progress-fill { background: var(--forest); height: 100%; transition: width 0.3s ease; }
+
+  .ready-estimate { font-size: 13.5px; color: var(--maroon); font-weight: 600; margin: 8px 0 0; }
+
+  .pot-steps { counter-reset: pstep; margin-top: 8px; }
+
+  .pot-step {
+    counter-increment: pstep;
+    position: relative;
+    padding: 14px 0 14px 42px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .pot-step:first-child { border-top: none; }
+
+  .pot-step::before {
+    content: counter(pstep);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: var(--paper);
+  }
+
+  .pot-step.done { opacity: 0.55; }
+  .pot-step.done::before { content: "✓"; background: var(--forest); border-color: var(--forest); color: var(--paper); }
+  .pot-step.ready::before { border-color: var(--maroon); color: var(--maroon); }
+
+  .step-title-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .step-title { font-size: 15px; font-weight: 600; }
+  .step-desc { font-size: 14px; color: var(--ink-soft); margin: 5px 0 10px; }
+
+  .step-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 13.5px; }
+
+  .countdown { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--maroon); }
+  .duration-hint { color: var(--ink-soft); }
+
+  .step-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .step-check input { accent-color: var(--forest); width: 15px; height: 15px; }
+
+  @media (max-width: 480px) {
+    .pot-form { padding: 18px; }
+    .pot-card { padding: 18px 16px 14px; }
+  }
+
   /* ---------- Footer ---------- */
 
   footer {
@@ -342,7 +531,7 @@
   footer a { color: var(--ink-soft); }
 
   @media print {
-    nav.index, #filter { display: none; }
+    nav.index, #filter, .pot-form, .btn-text-danger, #assistant { display: none; }
     body { background: white; }
     section { border-bottom: 1px solid #ccc; }
     .callout { border-left-color: #000; }
@@ -355,7 +544,7 @@
   <div class="wrap">
     <p class="kicker">A field guide</p>
     <h1>How to cook any bean</h1>
-    <p class="hero-sub">One method covers almost every dried bean in the pantry — sort, soak, boil, simmer. Below: which beans need soaking, how long each one actually takes, the ten-minute step that makes kidney beans safe to eat, and a plain onion-and-garlic base that works underneath all of it.</p>
+    <p class="hero-sub">One method covers almost every dried bean in the pantry — sort, soak, boil, simmer. Below: a cooking assistant that builds a timed, step-by-step plan for as many pots as you're running at once, which beans need soaking, the ten-minute step that makes kidney beans safe to eat, and a plain onion-and-garlic base that works underneath all of it.</p>
     <div class="pod-row" aria-hidden="true">
       <svg width="220" height="34" viewBox="0 0 220 34" fill="none">
         <ellipse cx="17" cy="17" rx="14" ry="10" transform="rotate(-18 17 17)" fill="#7c2e28"/>
@@ -372,6 +561,7 @@
 <nav class="index" aria-label="Section index">
   <div class="wrap">
     <ol>
+      <li><a href="#assistant">Cooking assistant</a></li>
       <li><a href="#safety">Safety first</a></li>
       <li><a href="#method">The master method</a></li>
       <li><a href="#times">Cooking times by bean</a></li>
@@ -383,6 +573,60 @@
 </nav>
 
 <main>
+
+  <section id="assistant">
+    <div class="wrap">
+      <p class="eyebrow">Interactive tool</p>
+      <h2>Cooking assistant</h2>
+      <p class="lede">Pick a bean, how you're cooking it, and your soak plan — get a step-by-step plan with built-in timers. Add one pot per bean you're running; each tracks independently, and your progress is saved if you close the tab and come back.</p>
+
+      <form id="pot-form" class="pot-form" autocomplete="off">
+        <div class="form-row">
+          <div class="field">
+            <label for="f-bean">Bean</label>
+            <select id="f-bean" required>
+              <option value="">Choose a bean…</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-method">Cooking method</label>
+            <select id="f-method">
+              <option value="stovetop">Stovetop</option>
+              <option value="pressure">Pressure cooker / Instant Pot</option>
+              <option value="slow">Slow cooker</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-soak">Soak plan</label>
+            <select id="f-soak"></select>
+          </div>
+          <div class="field" id="f-heat-wrap" hidden>
+            <label for="f-heat">Slow cooker heat</label>
+            <select id="f-heat">
+              <option value="low">Low</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field field-grow">
+            <label for="f-label">Label this pot <span class="optional-tag">optional</span></label>
+            <input type="text" id="f-label" placeholder="e.g. Sunday chili beans">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Add pot</button>
+          <button type="button" id="clear-pots" class="btn-text-danger" hidden>Clear all pots</button>
+        </div>
+      </form>
+
+      <p id="pots-empty" class="pots-empty">No pots yet — add one above to get started.</p>
+      <div id="pots" class="pots-grid" aria-live="polite"></div>
+      <p class="table-note">Times here are planning estimates built from the reference table below — always confirm doneness by tasting, not just the clock. Timers keep running from the moment you start them, even across a page reload; leave the tab open (or come back to it) to get a sound and, if you allow it, a browser notification when a step is ready to check.</p>
+    </div>
+  </section>
 
   <section id="safety">
     <div class="wrap">
@@ -659,6 +903,526 @@
       row.style.display = name.includes(q) ? '' : 'none';
     });
   });
+</script>
+
+<script>
+(() => {
+  'use strict';
+
+  // soak: 'required' | 'recommended' | 'optional' | 'none'
+  // preBoil: true means the 10-minute hard boil is mandatory (kidney beans), not just good habit
+  // simmer / pc times in minutes; slow-cooker times in hours
+  const BEANS = [
+    { id: 'black',       name: 'Black beans',                       soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: [20, 25], slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'pinto',       name: 'Pinto beans',                       soak: 'recommended', preBoil: false, simmer: [60, 90],  pc: [25, 30], slow: { low: [7, 8],  high: [4, 5] } },
+    { id: 'kidney-red',  name: 'Red kidney beans',                  soak: 'required',    preBoil: true,  simmer: [45, 60],  pc: [25, 30], slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'kidney-white', name: 'White kidney beans (cannellini)',  soak: 'recommended', preBoil: true,  simmer: [45, 60],  pc: [20, 25], slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'great-northern', name: 'Great Northern beans',           soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: [20, 25], slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'navy',        name: 'Navy beans',                        soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: [25, 30], slow: { low: [7, 8],  high: [4, 4.5] } },
+    { id: 'chickpea',    name: 'Chickpeas (garbanzo)',               soak: 'recommended', preBoil: false, simmer: [60, 120], pc: [35, 40], slow: { low: [8, 9],  high: [4, 5] } },
+    { id: 'blackeyed',   name: 'Black-eyed peas',                   soak: 'optional',    preBoil: false, simmer: [30, 45], simmerUnsoaked: [45, 60], pc: [15, 20], slow: { low: [6, 7],  high: [3, 3.5] } },
+    { id: 'lima',        name: 'Lima beans',                        soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: [15, 20], slow: { low: [6, 7],  high: [3, 3.5] } },
+    { id: 'fava',        name: 'Fava beans (dried, peeled)',        soak: 'required',    preBoil: false, simmer: [40, 50],  pc: [15, 20], slow: { low: [6, 7],  high: [3, 3.5] } },
+    { id: 'adzuki',      name: 'Adzuki beans',                      soak: 'optional',    preBoil: false, simmer: [45, 60],  pc: [20, 25], slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'lentil',      name: 'Lentils (brown/green)',             soak: 'none',        preBoil: false, simmer: [20, 30],  pc: [8, 10],  slow: { low: [4, 6],  high: [2, 3] }, mushWarning: true },
+    { id: 'splitpea',    name: 'Split peas',                        soak: 'none',        preBoil: false, simmer: [45, 60],  pc: [10, 15], slow: { low: [6, 8],  high: [3, 4] } },
+    { id: 'mung',        name: 'Mung beans',                        soak: 'optional',    preBoil: false, simmer: [30, 45],  pc: [15, 20], slow: { low: [4, 6],  high: [2, 3] }, mushWarning: true },
+  ];
+  const beanById = id => BEANS.find(b => b.id === id);
+
+  const METHOD_LABEL = { stovetop: 'Stovetop', pressure: 'Pressure cooker', slow: 'Slow cooker' };
+
+  // ---------- helpers ----------
+
+  function fmtRange(lo, hi, unit) {
+    return lo === hi ? `${lo} ${unit}` : `${lo}–${hi} ${unit}`;
+  }
+
+  function fmtMinutes(min) {
+    if (min < 60) return `${min} min`;
+    const h = Math.floor(min / 60), m = Math.round(min % 60);
+    return m ? `${h} hr ${m} min` : `${h} hr`;
+  }
+
+  function fmtRangeMinutes(lo, hi) {
+    if (lo >= 60 || hi >= 60) {
+      const loT = fmtMinutes(lo), hiT = fmtMinutes(hi);
+      return loT === hiT ? loT : `${loT}–${hiT}`;
+    }
+    return fmtRange(lo, hi, 'min');
+  }
+
+  function fmtClock(date) {
+    return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  }
+
+  function fmtRemaining(ms) {
+    if (ms <= 0) return 'Time’s up';
+    const totalSec = Math.ceil(ms / 1000);
+    const h = Math.floor(totalSec / 3600);
+    const m = Math.floor((totalSec % 3600) / 60);
+    const s = totalSec % 60;
+    if (h > 0) return `${h}h ${String(m).padStart(2, '0')}m`;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  }
+
+  function uid() {
+    return 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  }
+
+  // ---------- soak plan options ----------
+
+  function soakOptions(bean) {
+    const opts = [];
+    if (bean.soak === 'none') {
+      opts.push({ value: 'none', label: 'No soak needed for this bean' });
+    } else {
+      opts.push({ value: 'long', label: 'Long soak (8–24 hr)' });
+      opts.push({ value: 'quick', label: 'Quick soak (~1 hr 5 min)' });
+      opts.push({ value: 'already', label: 'Already soaked' });
+      if (bean.soak === 'optional' || bean.soak === 'recommended') {
+        opts.push({ value: 'skip', label: 'No soak (cook straight from dry)' });
+      }
+    }
+    return opts;
+  }
+
+  // ---------- step generation ----------
+
+  function simmerRangeFor(bean, soakPlan) {
+    if (soakPlan === 'skip') {
+      if (bean.simmerUnsoaked) return bean.simmerUnsoaked;
+      return [bean.simmer[0] + 15, bean.simmer[1] + 15];
+    }
+    return bean.simmer;
+  }
+
+  function buildSteps(bean, method, soakPlan, heat) {
+    const steps = [];
+    const add = (key, title, desc, durMin, opts) => steps.push(Object.assign({
+      key, title, desc, durationMin: durMin != null ? durMin : null,
+    }, opts || {}));
+
+    add('sort', 'Sort and rinse', 'Pick through for small stones or shriveled beans, then rinse under cold water until it runs clear.');
+
+    // Soak
+    if (bean.soak === 'none') {
+      add('soak', 'No soak needed', `${bean.name} cook fine straight from dry — no soaking step required.`);
+    } else if (soakPlan === 'already') {
+      add('soak', 'Already soaked', 'Beans are drained and rinsed, ready to cook.');
+    } else if (soakPlan === 'skip') {
+      add('soak', 'Skipping the soak', 'Cooking straight from dry. Rinse well first — expect a longer simmer and a bit more gas.');
+    } else if (soakPlan === 'quick') {
+      add('soak-boil', 'Quick soak: boil', 'Cover with water and bring to a boil for 2–3 minutes.', 3);
+      add('soak-stand', 'Quick soak: stand', 'Take off the heat, cover, and let stand. Then drain and rinse before cooking.', 65);
+    } else {
+      add('soak', 'Long soak', `Cover with cold water (3–4 cups per cup of beans) and let sit at room temperature. Refrigerate if soaking longer than 8 hours or your kitchen runs warm. Drain and rinse before cooking.`, 8 * 60, { rangeMax: 24 * 60 });
+    }
+
+    const required = bean.preBoil;
+    const preBoilDesc = required
+      ? `Bring to a full rolling boil and boil uncovered for at least 10 minutes — this step is mandatory. Raw or undercooked ${bean.name.toLowerCase()} contain a natural toxin that this step destroys; never skip it, and never rely on a slow cooker on low heat to do it for you.`
+      : 'Bring to a full boil for about 10 minutes before dropping to a simmer — a good habit for any dried bean, and it neutralizes the lower-level lectins most legumes carry.';
+    const preBoilTitle = method === 'pressure'
+      ? 'Hard boil first (sauté function or stovetop)'
+      : 'Hard boil, 10 minutes';
+
+    if (method === 'stovetop') {
+      add('preboil', preBoilTitle, preBoilDesc, 10, { required });
+      const [lo, hi] = simmerRangeFor(bean, soakPlan);
+      add('simmer', 'Simmer', `Reduce to a gentle simmer, partially covered. Add aromatics and salt now; hold acidic ingredients (tomato, vinegar, citrus) until the beans are already tender. Start checking at the low end of the time, then every 5–10 minutes.`, lo, { rangeMax: hi });
+      add('rest', 'Rest', 'Turn off the heat and let the beans sit in their cooking liquid for 10–15 minutes before serving.', 10, { rangeMax: 15 });
+    } else if (method === 'pressure') {
+      add('preboil', preBoilTitle, preBoilDesc, 10, { required });
+      const [lo, hi] = bean.pc;
+      add('cook', 'Seal and cook at high pressure', `Add fresh water to cover, seal the lid, and cook at high pressure. Use a natural release (let pressure drop on its own) for creamier, more intact beans; quick-release if you're in a hurry, though beans may split more.`, lo, { rangeMax: hi });
+      add('release', 'Natural release', 'Let the pressure drop on its own before opening the lid.', 10, { rangeMax: 15 });
+    } else {
+      add('preboil', preBoilTitle, preBoilDesc, 10, { required });
+      const range = heat === 'high' ? bean.slow.high : bean.slow.low;
+      const lo = Math.round(range[0] * 60), hi = Math.round(range[1] * 60);
+      let desc = `Transfer to the slow cooker with fresh water to cover by about 2 inches, plus your aromatics. Cook on ${heat === 'high' ? 'high' : 'low'}.`;
+      if (bean.mushWarning) desc += ' This bean breaks down fast — check well before the low end of the range so it doesn’t turn to mush.';
+      add('cook', 'Cook', desc, lo, { rangeMax: hi });
+      add('check', 'Check doneness', 'Slow cookers vary by model — taste rather than trusting the clock alone.', 10, { rangeMax: 15 });
+    }
+
+    return steps.map(s => Object.assign(s, { startedAt: null, done: false, notified: false }));
+  }
+
+  // ---------- state ----------
+
+  const STORAGE_KEY = 'beanAssistant.pots.v1';
+  let pots = loadState();
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) { return []; }
+  }
+
+  function saveState() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(pots)); } catch (e) { /* storage unavailable */ }
+  }
+
+  // ---------- audio + notifications ----------
+
+  let audioCtx = null;
+  function unlockAudio() {
+    if (!audioCtx) {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if (Ctx) audioCtx = new Ctx();
+    }
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  }
+
+  function beep() {
+    if (!audioCtx) return;
+    try {
+      [0, 260].forEach(delay => {
+        setTimeout(() => {
+          const o = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          o.connect(g); g.connect(audioCtx.destination);
+          o.frequency.value = 880;
+          g.gain.setValueAtTime(0.16, audioCtx.currentTime);
+          g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.4);
+          o.start();
+          o.stop(audioCtx.currentTime + 0.4);
+        }, delay);
+      });
+    } catch (e) { /* ignore */ }
+  }
+
+  const baseTitle = document.title;
+  let alertCount = 0;
+
+  function flashTitle() {
+    alertCount++;
+    document.title = `(${alertCount}) ⏰ ${baseTitle}`;
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) { alertCount = 0; document.title = baseTitle; }
+  });
+
+  function notify(pot, step) {
+    beep();
+    flashTitle();
+    if (window.Notification && Notification.permission === 'granted') {
+      try { new Notification(`${pot.label}: ${step.title}`, { body: 'Time’s up — go check on it.' }); } catch (e) { /* ignore */ }
+    }
+  }
+
+  // ---------- rendering ----------
+
+  const potsEl = document.getElementById('pots');
+  const emptyEl = document.getElementById('pots-empty');
+  const clearBtn = document.getElementById('clear-pots');
+
+  function stepStatusClass(step) {
+    if (step.done) return 'done';
+    if (step.durationMin != null && step.startedAt) {
+      const remaining = step.startedAt + step.durationMin * 60000 - Date.now();
+      if (remaining <= 0) return 'ready';
+    }
+    return '';
+  }
+
+  function estimateReady(pot) {
+    let remainingMs = 0;
+    const now = Date.now();
+    for (const step of pot.steps) {
+      if (step.done) continue;
+      if (step.durationMin == null) continue;
+      if (step.startedAt) {
+        remainingMs += Math.max(0, step.startedAt + step.durationMin * 60000 - now);
+      } else {
+        remainingMs += step.durationMin * 60000;
+      }
+    }
+    if (remainingMs <= 0) return null;
+    return new Date(now + remainingMs);
+  }
+
+  function renderStepControls(pot, step) {
+    const wrap = document.createElement('div');
+    wrap.className = 'step-controls';
+
+    if (step.durationMin != null && !step.done) {
+      if (step.startedAt) {
+        const cd = document.createElement('span');
+        cd.className = 'countdown';
+        const remaining = step.startedAt + step.durationMin * 60000 - Date.now();
+        cd.textContent = fmtRemaining(remaining);
+        wrap.appendChild(cd);
+
+        const resetBtn = document.createElement('button');
+        resetBtn.type = 'button';
+        resetBtn.className = 'btn btn-small';
+        resetBtn.textContent = 'Reset timer';
+        resetBtn.addEventListener('click', () => {
+          step.startedAt = null;
+          step.notified = false;
+          saveState();
+          render();
+        });
+        wrap.appendChild(resetBtn);
+      } else {
+        const hint = document.createElement('span');
+        hint.className = 'duration-hint';
+        hint.textContent = step.rangeMax
+          ? `${fmtRangeMinutes(step.durationMin, step.rangeMax)}`
+          : fmtMinutes(step.durationMin);
+        wrap.appendChild(hint);
+
+        const startBtn = document.createElement('button');
+        startBtn.type = 'button';
+        startBtn.className = 'btn btn-primary btn-small';
+        startBtn.textContent = 'Start timer';
+        startBtn.addEventListener('click', () => {
+          unlockAudio();
+          if (window.Notification && Notification.permission === 'default') {
+            Notification.requestPermission();
+          }
+          step.startedAt = Date.now();
+          step.notified = false;
+          saveState();
+          render();
+        });
+        wrap.appendChild(startBtn);
+      }
+    }
+
+    const label = document.createElement('label');
+    label.className = 'step-check';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = step.done;
+    cb.addEventListener('change', () => {
+      step.done = cb.checked;
+      if (step.done) step.startedAt = null;
+      saveState();
+      render();
+    });
+    label.appendChild(cb);
+    label.appendChild(document.createTextNode(step.done ? 'Done' : 'Mark done'));
+    wrap.appendChild(label);
+
+    return wrap;
+  }
+
+  function renderPot(pot) {
+    const card = document.createElement('article');
+    card.className = 'pot-card';
+    card.dataset.pot = pot.id;
+
+    const head = document.createElement('div');
+    head.className = 'pot-card-head';
+
+    const headLeft = document.createElement('div');
+    const title = document.createElement('h3');
+    title.className = 'pot-title';
+    title.textContent = pot.label;
+    headLeft.appendChild(title);
+
+    const meta = document.createElement('div');
+    meta.className = 'pot-meta';
+    const badge = document.createElement('span');
+    badge.className = 'method-badge';
+    badge.textContent = METHOD_LABEL[pot.method];
+    meta.appendChild(badge);
+    const beanName = document.createElement('span');
+    beanName.textContent = beanById(pot.beanId).name;
+    meta.appendChild(beanName);
+    headLeft.appendChild(meta);
+    head.appendChild(headLeft);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'pot-remove';
+    removeBtn.textContent = 'Remove';
+    removeBtn.addEventListener('click', () => {
+      if (confirm(`Remove "${pot.label}"? This can’t be undone.`)) {
+        pots = pots.filter(p => p.id !== pot.id);
+        saveState();
+        render();
+      }
+    });
+    head.appendChild(removeBtn);
+    card.appendChild(head);
+
+    const doneCount = pot.steps.filter(s => s.done).length;
+    const progress = document.createElement('div');
+    progress.className = 'pot-progress';
+    progress.textContent = `Step ${Math.min(doneCount + 1, pot.steps.length)} of ${pot.steps.length}`;
+    const bar = document.createElement('div');
+    bar.className = 'pot-progress-bar';
+    const fill = document.createElement('div');
+    fill.className = 'pot-progress-fill';
+    fill.style.width = `${Math.round((doneCount / pot.steps.length) * 100)}%`;
+    bar.appendChild(fill);
+    progress.appendChild(bar);
+    card.appendChild(progress);
+
+    const readyAt = estimateReady(pot);
+    if (readyAt) {
+      const est = document.createElement('p');
+      est.className = 'ready-estimate';
+      est.textContent = `Estimated ready by ${fmtClock(readyAt)}`;
+      card.appendChild(est);
+    }
+
+    const stepsWrap = document.createElement('div');
+    stepsWrap.className = 'pot-steps';
+    pot.steps.forEach(step => {
+      const stepEl = document.createElement('div');
+      stepEl.className = `pot-step ${stepStatusClass(step)}`.trim();
+      stepEl.dataset.step = step.key;
+
+      const titleRow = document.createElement('div');
+      titleRow.className = 'step-title-row';
+      const t = document.createElement('span');
+      t.className = 'step-title';
+      t.textContent = step.title;
+      titleRow.appendChild(t);
+      if (step.required) {
+        const flag = document.createElement('span');
+        flag.className = 'flag';
+        flag.textContent = 'required';
+        titleRow.appendChild(flag);
+      }
+      stepEl.appendChild(titleRow);
+
+      const desc = document.createElement('p');
+      desc.className = 'step-desc';
+      desc.textContent = step.desc;
+      stepEl.appendChild(desc);
+
+      stepEl.appendChild(renderStepControls(pot, step));
+      stepsWrap.appendChild(stepEl);
+    });
+    card.appendChild(stepsWrap);
+
+    return card;
+  }
+
+  function render() {
+    potsEl.innerHTML = '';
+    pots.forEach(pot => potsEl.appendChild(renderPot(pot)));
+    emptyEl.hidden = pots.length > 0;
+    clearBtn.hidden = pots.length === 0;
+  }
+
+  // ---------- per-second tick (updates countdowns without full re-render) ----------
+
+  function tick() {
+    let structuralChange = false;
+    pots.forEach(pot => {
+      pot.steps.forEach(step => {
+        if (step.done || step.durationMin == null || !step.startedAt) return;
+        const remaining = step.startedAt + step.durationMin * 60000 - Date.now();
+        const el = potsEl.querySelector(`[data-pot="${pot.id}"] [data-step="${step.key}"] .countdown`);
+        if (el) el.textContent = fmtRemaining(remaining);
+        if (remaining <= 0 && !step.notified) {
+          step.notified = true;
+          notify(pot, step);
+          structuralChange = true;
+        }
+      });
+      const readyEl = potsEl.querySelector(`[data-pot="${pot.id}"] .ready-estimate`);
+      if (readyEl) {
+        const readyAt = estimateReady(pot);
+        readyEl.textContent = readyAt ? `Estimated ready by ${fmtClock(readyAt)}` : '';
+      }
+    });
+    if (structuralChange) { saveState(); render(); }
+  }
+
+  // ---------- form ----------
+
+  const beanSelect = document.getElementById('f-bean');
+  const methodSelect = document.getElementById('f-method');
+  const soakSelect = document.getElementById('f-soak');
+  const heatWrap = document.getElementById('f-heat-wrap');
+  const labelInput = document.getElementById('f-label');
+  const form = document.getElementById('pot-form');
+
+  BEANS.forEach(b => {
+    const opt = document.createElement('option');
+    opt.value = b.id;
+    opt.textContent = b.name;
+    beanSelect.appendChild(opt);
+  });
+
+  function refreshSoakOptions() {
+    const bean = beanById(beanSelect.value);
+    soakSelect.innerHTML = '';
+    if (!bean) {
+      soakSelect.disabled = true;
+      return;
+    }
+    soakSelect.disabled = false;
+    soakOptions(bean).forEach(o => {
+      const opt = document.createElement('option');
+      opt.value = o.value;
+      opt.textContent = o.label;
+      soakSelect.appendChild(opt);
+    });
+  }
+
+  function refreshHeatVisibility() {
+    heatWrap.hidden = methodSelect.value !== 'slow';
+  }
+
+  beanSelect.addEventListener('change', refreshSoakOptions);
+  methodSelect.addEventListener('change', refreshHeatVisibility);
+  refreshSoakOptions();
+  refreshHeatVisibility();
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const bean = beanById(beanSelect.value);
+    if (!bean) { beanSelect.focus(); return; }
+    const method = methodSelect.value;
+    const soakPlan = soakSelect.value;
+    const heat = document.getElementById('f-heat').value;
+    const label = labelInput.value.trim() || bean.name;
+
+    const pot = {
+      id: uid(),
+      label,
+      beanId: bean.id,
+      method,
+      soakPlan,
+      heat,
+      createdAt: Date.now(),
+      steps: buildSteps(bean, method, soakPlan, heat),
+    };
+    pots.push(pot);
+    saveState();
+    render();
+
+    form.reset();
+    beanSelect.value = '';
+    refreshSoakOptions();
+    refreshHeatVisibility();
+    document.getElementById(`pots`).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  clearBtn.addEventListener('click', () => {
+    if (confirm('Remove all pots? This can’t be undone.')) {
+      pots = [];
+      saveState();
+      render();
+    }
+  });
+
+  render();
+  setInterval(tick, 1000);
+})();
 </script>
 
 </body>
