@@ -1,0 +1,14 @@
+{
+  "name": "How to Cook Any Bean — A Field Guide",
+  "short_name": "Bean Guide",
+  "description": "A safe method for soaking, cooking, and storing any dried bean, plus a step-by-step cooking assistant with timers.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#efeadc",
+  "theme_color": "#efeadc",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
