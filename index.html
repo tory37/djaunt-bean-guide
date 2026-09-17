@@ -1,38 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-dj-theme="hoard">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Cook Any Bean — A Field Guide</title>
 <meta name="description" content="A generalized, safe method for soaking, cooking, seasoning, and storing dried beans of any kind.">
 <link rel="icon" href="favicon.ico" sizes="32x32">
-<link rel="icon" type="image/svg+xml" href="icons/icon-master.svg">
+<link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<meta name="theme-color" content="#efeadc">
+<meta name="theme-color" content="#0D0C0A">
 <meta name="apple-mobile-web-app-title" content="Bean Guide">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="brand/tokens.css">
 <style>
   :root {
-    --paper: #efeadc;
-    --card: #faf7ee;
-    --ink: #2a2118;
-    --ink-soft: #55493c;
-    --maroon: #7c2e28;
-    --maroon-soft: #a1483f;
-    --olive: #6b6224;
-    --forest: #3e5641;
-    --forest-soft: #5a7a5f;
-    --line: #cfc6ac;
-    --line-soft: #e2dbc7;
     --max: 760px;
   }
 
@@ -42,28 +32,29 @@
 
   body {
     margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--dj-bg);
+    color: var(--dj-text);
+    font-family: var(--dj-font-body);
     font-size: 17px;
-    line-height: 1.6;
+    line-height: var(--dj-leading-body);
     -webkit-font-smoothing: antialiased;
   }
 
-  ::selection { background: var(--olive); color: var(--paper); }
+  ::selection { background: var(--dj-accent); color: var(--dj-on-accent); }
 
-  a { color: var(--maroon); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-  a:hover { color: var(--maroon-soft); }
+  a { color: var(--dj-accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { color: var(--dj-accent-hi); }
   a:focus-visible, button:focus-visible, input:focus-visible {
-    outline: 2px solid var(--forest);
+    outline: 2px solid var(--dj-accent);
     outline-offset: 2px;
   }
 
   h1, h2, h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.15;
+    font-family: var(--dj-font-display);
+    font-weight: 700;
+    letter-spacing: var(--dj-tracking-display);
+    color: var(--dj-text);
+    line-height: var(--dj-leading-tight);
     margin: 0 0 0.4em;
   }
 
@@ -76,45 +67,67 @@
   /* ---------- Header / hero ---------- */
 
   header.hero {
+    position: relative;
     padding: 64px 0 40px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: var(--dj-border-width) solid var(--dj-border);
+    overflow: hidden;
   }
 
-  .kicker {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    color: var(--forest-soft);
+  .dj-mark {
+    display: inline-block;
+    background-color: currentColor;
+    -webkit-mask: url('brand/djaunt-icon.svg') no-repeat center / contain;
+            mask: url('brand/djaunt-icon.svg') no-repeat center / contain;
+  }
+
+  .hero-mark {
+    position: absolute;
+    top: -8%;
+    right: -6%;
+    width: 46%;
+    max-width: 420px;
+    aspect-ratio: 1;
+    color: var(--dj-accent);
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin: 0 0 18px;
-    letter-spacing: 0.02em;
+  }
+
+  .brand-row .dj-mark { width: 26px; height: 26px; flex-shrink: 0; color: var(--dj-accent); }
+
+  .kicker {
+    font-family: var(--dj-font-mono);
+    font-size: var(--dj-text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--dj-tracking-label);
+    color: var(--dj-accent);
+    margin: 0;
   }
 
   h1 {
     font-size: clamp(2.1rem, 5vw, 3.1rem);
     font-style: normal;
-    letter-spacing: -0.01em;
   }
 
   .hero-sub {
     font-size: 1.15rem;
-    color: var(--ink-soft);
+    color: var(--dj-text-muted);
     max-width: 58ch;
     margin: 18px 0 0;
+    position: relative;
   }
-
-  .pod-row {
-    display: flex;
-    gap: 10px;
-    margin: 30px 0 4px;
-    align-items: center;
-  }
-
-  .pod-row svg { display: block; }
 
   /* ---------- Index nav ---------- */
 
   nav.index {
     padding: 22px 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: var(--dj-border-width) solid var(--dj-border);
   }
 
   nav.index ol {
@@ -129,44 +142,48 @@
 
   nav.index li:not(:last-child)::after {
     content: "·";
-    color: var(--line);
+    color: var(--dj-border);
     margin: 0 10px;
   }
 
   nav.index a {
-    color: var(--ink-soft);
+    color: var(--dj-text-muted);
     text-decoration: none;
     border-bottom: 1px solid transparent;
   }
-  nav.index a:hover { color: var(--maroon); border-bottom-color: var(--maroon); }
+  nav.index a:hover { color: var(--dj-accent); border-bottom-color: var(--dj-accent); }
 
   /* ---------- Sections ---------- */
 
-  section { padding: 52px 0; border-bottom: 1px solid var(--line-soft); }
+  section { padding: 52px 0; border-bottom: var(--dj-border-width) solid var(--dj-border); }
   section:last-of-type { border-bottom: none; }
 
   section > .eyebrow {
-    font-family: 'Inter', sans-serif;
-    font-size: 13.5px;
-    color: var(--forest-soft);
+    font-family: var(--dj-font-mono);
+    font-size: var(--dj-text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--dj-tracking-label);
+    color: var(--dj-accent);
     margin: 0 0 10px;
   }
 
   h2 { font-size: 1.7rem; }
-  h2 + .lede { color: var(--ink-soft); margin-top: -6px; margin-bottom: 26px; max-width: 62ch; }
+  h2 + .lede { color: var(--dj-text-muted); margin-top: -6px; margin-bottom: 26px; max-width: 62ch; }
 
   /* ---------- Safety callout ---------- */
 
   .callout {
-    background: var(--card);
-    border-left: 4px solid var(--maroon);
+    background: var(--dj-surface);
+    border: var(--dj-border-width) solid var(--dj-border);
+    border-left: 3px solid var(--dj-danger);
+    border-radius: var(--dj-radius-md);
     padding: 22px 26px;
     margin: 28px 0 0;
   }
 
   .callout h3 {
     font-size: 1.15rem;
-    color: var(--maroon);
+    color: var(--dj-danger);
     margin-bottom: 10px;
   }
 
@@ -184,24 +201,24 @@
     counter-increment: step;
     position: relative;
     padding: 0 0 30px 52px;
-    border-left: 1px solid var(--line);
+    border-left: var(--dj-border-width) solid var(--dj-border);
     margin-left: 17px;
   }
   .step:last-child { border-left-color: transparent; padding-bottom: 0; }
 
   .step::before {
     content: counter(step);
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
+    font-family: var(--dj-font-display);
+    font-weight: 700;
     position: absolute;
     left: -18px;
     top: -2px;
     width: 34px;
     height: 34px;
-    background: var(--paper);
-    border: 1px solid var(--forest);
-    color: var(--forest);
-    border-radius: 50%;
+    background: var(--dj-bg);
+    border: var(--dj-border-width) solid var(--dj-accent);
+    color: var(--dj-accent);
+    border-radius: var(--dj-radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -209,11 +226,11 @@
   }
 
   .step h3 { font-size: 1.15rem; margin-bottom: 6px; }
-  .step p, .step ul { margin: 0 0 10px; color: var(--ink-soft); }
+  .step p, .step ul { margin: 0 0 10px; color: var(--dj-text-muted); }
   .step p:last-child, .step ul:last-child { margin-bottom: 0; }
   .step ul { padding-left: 20px; }
   .step li { margin-bottom: 4px; }
-  .step strong { color: var(--ink); }
+  .step strong { color: var(--dj-text); }
 
   /* ---------- Table ---------- */
 
@@ -227,65 +244,71 @@
   }
 
   #filter {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--dj-font-body);
     font-size: 14.5px;
     padding: 9px 14px;
-    border: 1px solid var(--line);
-    background: var(--card);
-    color: var(--ink);
-    border-radius: 3px;
+    border: var(--dj-border-width) solid var(--dj-border);
+    background: var(--dj-surface);
+    color: var(--dj-text);
+    border-radius: var(--dj-radius-sm);
     min-width: 220px;
   }
-  #filter::placeholder { color: var(--ink-soft); }
+  #filter::placeholder { color: var(--dj-text-muted); }
+  #filter:focus-visible { outline: 2px solid var(--dj-accent); outline-offset: 1px; }
 
-  .table-scroll { overflow-x: auto; border: 1px solid var(--line); }
+  .table-scroll { overflow-x: auto; border: var(--dj-border-width) solid var(--dj-border); border-radius: var(--dj-radius-md); }
 
   table {
     border-collapse: collapse;
     width: 100%;
     min-width: 620px;
     font-size: 15px;
-    background: var(--card);
+    background: var(--dj-surface);
   }
 
   thead th {
     text-align: left;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    color: var(--forest);
-    background: var(--paper);
+    font-family: var(--dj-font-mono);
+    font-weight: 500;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: var(--dj-tracking-label);
+    color: var(--dj-text-muted);
+    background: var(--dj-surface-raised);
     padding: 12px 16px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: var(--dj-border-width) solid var(--dj-border);
     white-space: nowrap;
   }
 
   tbody td {
     padding: 12px 16px;
-    border-bottom: 1px solid var(--line-soft);
+    border-bottom: var(--dj-border-width) solid var(--dj-border);
     vertical-align: top;
   }
 
   tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover { background: var(--paper); }
+  tbody tr:hover { background: var(--dj-surface-raised); }
 
   td.bean-name { font-weight: 600; white-space: nowrap; }
-  td.note { color: var(--ink-soft); font-size: 14px; }
+  td.note { color: var(--dj-text-muted); font-size: 14px; }
 
   .flag {
     display: inline-block;
-    font-size: 11.5px;
-    font-weight: 600;
-    color: var(--maroon);
-    border: 1px solid var(--maroon-soft);
+    font-family: var(--dj-font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--dj-danger);
+    border: var(--dj-border-width) solid var(--dj-danger);
     padding: 1px 6px;
-    border-radius: 3px;
+    border-radius: var(--dj-radius-sm);
     margin-top: 4px;
   }
 
   .table-note {
     font-size: 14px;
-    color: var(--ink-soft);
+    color: var(--dj-text-muted);
     margin-top: 14px;
   }
 
@@ -304,16 +327,16 @@
 
   .base-grid h3 {
     font-size: 1rem;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--dj-font-body);
     font-weight: 600;
-    color: var(--forest);
+    color: var(--dj-accent);
     text-transform: none;
     margin-bottom: 8px;
   }
 
-  .base-grid ul { margin: 0; padding-left: 20px; color: var(--ink-soft); }
+  .base-grid ul { margin: 0; padding-left: 20px; color: var(--dj-text-muted); }
   .base-grid li { margin-bottom: 6px; }
-  .base-grid li strong { color: var(--ink); }
+  .base-grid li strong { color: var(--dj-text); }
 
   /* ---------- Storage ---------- */
 
@@ -329,57 +352,57 @@
   }
 
   .storage-card {
-    border-top: 3px solid var(--olive);
+    border-top: 2px solid var(--dj-accent);
     padding-top: 14px;
   }
 
-  .storage-card h3 { font-size: 1.02rem; font-family: 'Inter', sans-serif; font-weight: 600; margin-bottom: 8px; }
-  .storage-card p { color: var(--ink-soft); font-size: 15px; margin: 0; }
+  .storage-card h3 { font-size: 1.02rem; font-family: var(--dj-font-body); font-weight: 600; margin-bottom: 8px; }
+  .storage-card p { color: var(--dj-text-muted); font-size: 15px; margin: 0; }
 
   /* ---------- Troubleshooting ---------- */
 
   .qa { margin-top: 26px; }
-  .qa-item { padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
+  .qa-item { padding: 18px 0; border-bottom: var(--dj-border-width) solid var(--dj-border); }
   .qa-item:last-child { border-bottom: none; }
-  .qa-item h3 { font-size: 1.02rem; font-family: 'Inter', sans-serif; font-weight: 600; margin-bottom: 6px; }
-  .qa-item p { color: var(--ink-soft); margin: 0; }
+  .qa-item h3 { font-size: 1.02rem; font-family: var(--dj-font-body); font-weight: 600; margin-bottom: 6px; }
+  .qa-item p { color: var(--dj-text-muted); margin: 0; }
 
   /* ---------- Cooking assistant ---------- */
 
   .btn {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--dj-font-body);
     font-size: 14.5px;
     font-weight: 600;
     padding: 10px 18px;
-    border-radius: 3px;
-    border: 1px solid var(--line);
-    background: var(--paper);
-    color: var(--ink);
+    border-radius: var(--dj-radius-md);
+    border: var(--dj-border-width) solid var(--dj-border);
+    background: var(--dj-surface);
+    color: var(--dj-text);
     cursor: pointer;
     line-height: 1.2;
   }
-  .btn:hover { border-color: var(--forest); color: var(--forest); }
-  .btn-primary { background: var(--forest); border-color: var(--forest); color: var(--paper); }
-  .btn-primary:hover { background: var(--forest-soft); border-color: var(--forest-soft); color: var(--paper); }
+  .btn:hover { border-color: var(--dj-accent); color: var(--dj-accent); }
+  .btn-primary { background: var(--dj-accent); border-color: var(--dj-accent); color: var(--dj-on-accent); }
+  .btn-primary:hover { background: var(--dj-accent-hi); border-color: var(--dj-accent-hi); color: var(--dj-on-accent); }
   .btn-small { padding: 6px 12px; font-size: 13px; }
 
   .btn-text-danger {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--dj-font-body);
     font-size: 13.5px;
     background: none;
     border: none;
-    color: var(--maroon-soft);
+    color: var(--dj-danger);
     text-decoration: underline;
     text-underline-offset: 2px;
     cursor: pointer;
     padding: 6px 4px;
   }
-  .btn-text-danger:hover { color: var(--maroon); }
+  .btn-text-danger:hover { color: #ff6b52; }
 
   .pot-form {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 4px;
+    background: var(--dj-surface);
+    border: var(--dj-border-width) solid var(--dj-border);
+    border-radius: var(--dj-radius-lg);
     padding: 24px;
     margin-top: 28px;
   }
@@ -391,27 +414,28 @@
   .field-grow { flex: 2 1 280px; }
 
   .field label {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--dj-font-body);
     font-size: 13px;
     font-weight: 600;
-    color: var(--forest);
+    color: var(--dj-accent);
   }
 
-  .optional-tag { font-weight: 400; color: var(--ink-soft); font-size: 12px; }
+  .optional-tag { font-weight: 400; color: var(--dj-text-muted); font-size: 12px; }
 
   .field select, .field input[type="text"] {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--dj-font-body);
     font-size: 15px;
     padding: 10px 12px;
-    border: 1px solid var(--line);
-    background: var(--paper);
-    color: var(--ink);
-    border-radius: 3px;
+    border: var(--dj-border-width) solid var(--dj-border);
+    background: var(--dj-surface-raised);
+    color: var(--dj-text);
+    border-radius: var(--dj-radius-sm);
   }
+  .field select:focus-visible, .field input[type="text"]:focus-visible { outline: 2px solid var(--dj-accent); outline-offset: 1px; }
 
   .form-actions { display: flex; align-items: center; gap: 18px; margin-top: 20px; flex-wrap: wrap; }
 
-  .pots-empty { color: var(--ink-soft); font-size: 15px; font-style: italic; margin: 28px 0 0; }
+  .pots-empty { color: var(--dj-text-muted); font-size: 15px; font-style: italic; margin: 28px 0 0; }
 
   .pots-grid {
     display: grid;
@@ -421,9 +445,9 @@
   }
 
   .pot-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 4px;
+    background: var(--dj-surface);
+    border: var(--dj-border-width) solid var(--dj-border);
+    border-radius: var(--dj-radius-lg);
     padding: 22px 22px 18px;
     display: flex;
     flex-direction: column;
@@ -434,33 +458,33 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 10px;
-    border-bottom: 1px solid var(--line-soft);
+    border-bottom: var(--dj-border-width) solid var(--dj-border);
     padding-bottom: 14px;
     margin-bottom: 4px;
   }
 
-  .pot-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px; }
+  .pot-title { font-family: var(--dj-font-display); font-size: 1.1rem; font-weight: 700; margin: 0 0 6px; }
 
-  .pot-meta { font-size: 12.5px; color: var(--ink-soft); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .pot-meta { font-size: 12.5px; color: var(--dj-text-muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 
   .method-badge {
     display: inline-block;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--dj-font-mono);
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     padding: 2px 8px;
-    border-radius: 10px;
-    border: 1px solid var(--forest-soft);
-    color: var(--forest);
+    border-radius: var(--dj-radius-sm);
+    border: var(--dj-border-width) solid var(--dj-accent-deep);
+    color: var(--dj-accent);
     white-space: nowrap;
   }
 
   .pot-remove {
     background: none;
     border: none;
-    color: var(--ink-soft);
+    color: var(--dj-text-muted);
     font-size: 13px;
     cursor: pointer;
     text-decoration: underline;
@@ -468,13 +492,13 @@
     padding: 2px;
     flex-shrink: 0;
   }
-  .pot-remove:hover { color: var(--maroon); }
+  .pot-remove:hover { color: var(--dj-danger); }
 
-  .pot-progress { font-size: 13px; color: var(--ink-soft); margin: 10px 0 2px; }
-  .pot-progress-bar { background: var(--line-soft); border-radius: 3px; height: 5px; overflow: hidden; margin-top: 6px; }
-  .pot-progress-fill { background: var(--forest); height: 100%; transition: width 0.3s ease; }
+  .pot-progress { font-size: 13px; color: var(--dj-text-muted); margin: 10px 0 2px; }
+  .pot-progress-bar { background: var(--dj-surface-raised); border-radius: var(--dj-radius-sm); height: 5px; overflow: hidden; margin-top: 6px; }
+  .pot-progress-fill { background: var(--dj-accent); height: 100%; transition: width var(--dj-dur-slow) var(--dj-ease); }
 
-  .ready-estimate { font-size: 13.5px; color: var(--maroon); font-weight: 600; margin: 8px 0 0; }
+  .ready-estimate { font-size: 13.5px; color: var(--dj-accent-hi); font-weight: 600; margin: 8px 0 0; }
 
   .pot-steps { counter-reset: pstep; margin-top: 8px; }
 
@@ -482,7 +506,7 @@
     counter-increment: pstep;
     position: relative;
     padding: 14px 0 14px 42px;
-    border-top: 1px solid var(--line-soft);
+    border-top: var(--dj-border-width) solid var(--dj-border);
   }
   .pot-step:first-child { border-top: none; }
 
@@ -493,40 +517,40 @@
     top: 14px;
     width: 26px;
     height: 26px;
-    border: 1px solid var(--line);
-    border-radius: 50%;
+    border: var(--dj-border-width) solid var(--dj-border);
+    border-radius: var(--dj-radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    color: var(--ink-soft);
-    background: var(--paper);
+    font-family: var(--dj-font-display);
+    font-weight: 700;
+    color: var(--dj-text-muted);
+    background: var(--dj-surface-raised);
   }
 
   .pot-step.done { opacity: 0.55; }
-  .pot-step.done::before { content: "✓"; background: var(--forest); border-color: var(--forest); color: var(--paper); }
-  .pot-step.ready::before { border-color: var(--maroon); color: var(--maroon); }
+  .pot-step.done::before { content: "✓"; background: var(--dj-success); border-color: var(--dj-success); color: var(--dj-on-accent); }
+  .pot-step.ready::before { border-color: var(--dj-warning); color: var(--dj-warning); }
 
   .step-title-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .step-title { font-size: 15px; font-weight: 600; }
-  .step-desc { font-size: 14px; color: var(--ink-soft); margin: 5px 0 10px; }
+  .step-desc { font-size: 14px; color: var(--dj-text-muted); margin: 5px 0 10px; }
 
   .step-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 13.5px; }
 
-  .countdown { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--maroon); }
-  .duration-hint { color: var(--ink-soft); }
+  .countdown { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--dj-accent-hi); font-family: var(--dj-font-mono); }
+  .duration-hint { color: var(--dj-text-muted); font-family: var(--dj-font-mono); }
 
   .step-check {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     font-size: 13.5px;
-    color: var(--ink-soft);
+    color: var(--dj-text-muted);
     cursor: pointer;
   }
-  .step-check input { accent-color: var(--forest); width: 15px; height: 15px; }
+  .step-check input { accent-color: var(--dj-accent); width: 15px; height: 15px; }
 
   @media (max-width: 480px) {
     .pot-form { padding: 18px; }
@@ -537,14 +561,27 @@
 
   footer {
     padding: 40px 0 70px;
-    color: var(--ink-soft);
+    color: var(--dj-text-muted);
     font-size: 14px;
   }
-  footer a { color: var(--ink-soft); }
+  footer a { color: var(--dj-text-muted); }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-family: var(--dj-font-mono);
+    font-size: var(--dj-text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--dj-tracking-label);
+    color: var(--dj-text-muted);
+  }
+  .footer-brand .dj-mark { width: 16px; height: 16px; color: var(--dj-accent); }
 
   @media print {
-    nav.index, #filter, .pot-form, .btn-text-danger, #assistant { display: none; }
-    body { background: white; }
+    nav.index, #filter, .pot-form, .btn-text-danger, #assistant, .hero-mark { display: none; }
+    body { background: white; color: #111; }
     section { border-bottom: 1px solid #ccc; }
     .callout { border-left-color: #000; }
   }
@@ -553,20 +590,14 @@
 <body>
 
 <header class="hero">
+  <div class="hero-mark dj-mark" aria-hidden="true"></div>
   <div class="wrap">
-    <p class="kicker">A field guide</p>
+    <div class="brand-row">
+      <span class="dj-mark" aria-hidden="true"></span>
+      <p class="kicker">A Djaunt field guide</p>
+    </div>
     <h1>How to cook any bean</h1>
     <p class="hero-sub">One method covers almost every dried bean in the pantry — sort, soak, boil, simmer. Below: a cooking assistant that builds a timed, step-by-step plan for as many pots as you're running at once, which beans need soaking, the ten-minute step that makes kidney beans safe to eat, and a plain onion-and-garlic base that works underneath all of it.</p>
-    <div class="pod-row" aria-hidden="true">
-      <svg width="220" height="34" viewBox="0 0 220 34" fill="none">
-        <ellipse cx="17" cy="17" rx="14" ry="10" transform="rotate(-18 17 17)" fill="#7c2e28"/>
-        <ellipse cx="52" cy="17" rx="13" ry="13" fill="#e2dbc7" stroke="#6b6224" stroke-width="1.5"/>
-        <ellipse cx="86" cy="17" rx="15" ry="9" transform="rotate(8 86 17)" fill="#2a2118"/>
-        <ellipse cx="121" cy="17" rx="13" ry="10" transform="rotate(-10 121 17)" fill="#faf7ee" stroke="#3e5641" stroke-width="1.5"/>
-        <ellipse cx="155" cy="17" rx="12" ry="12" fill="#a1483f"/>
-        <ellipse cx="189" cy="17" rx="14" ry="9" transform="rotate(15 189 17)" fill="#6b6224"/>
-      </svg>
-    </div>
   </div>
 </header>
 
@@ -706,7 +737,7 @@
       <p class="lede">Simmer times below start once the pot is soaked, boiled hard, and dropped to a simmer. Ranges assume beans bought within the last year; older beans take longer and sometimes never fully soften.</p>
 
       <div class="table-controls">
-        <label for="filter" style="font-size:14px; color:var(--ink-soft);">Filter the list</label>
+        <label for="filter" style="font-size:14px; color:var(--dj-text-muted);">Filter the list</label>
         <input type="text" id="filter" placeholder="Type a bean name…">
       </div>
 
@@ -901,6 +932,7 @@
 <footer>
   <div class="wrap">
     <p>General guidance for home cooking — not a substitute for official food-safety advice. For more on the kidney bean toxin specifically, the FDA and USDA extension services have detailed write-ups worth a search.</p>
+    <p class="footer-brand"><span class="dj-mark" aria-hidden="true"></span> Djaunt</p>
   </div>
 </footer>
 
