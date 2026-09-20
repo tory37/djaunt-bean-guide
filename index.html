@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="brand/tokens.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/buttons/buttons.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/steps/steps.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/callout/callout.css">
 <style>
   :root {
     --max: 760px;
@@ -173,27 +174,8 @@
   h2 + .lede { color: var(--dj-text-muted); margin-top: -6px; margin-bottom: 26px; max-width: 62ch; }
 
   /* ---------- Safety callout ---------- */
-
-  .callout {
-    background: var(--dj-surface);
-    border: var(--dj-border-width) solid var(--dj-border);
-    border-left: 3px solid var(--dj-danger);
-    border-radius: var(--dj-radius-md);
-    padding: 22px 26px;
-    margin: 28px 0 0;
-  }
-
-  .callout h3 {
-    font-size: 1.15rem;
-    color: var(--dj-danger);
-    margin-bottom: 10px;
-  }
-
-  .callout p { margin: 0 0 12px; }
-  .callout p:last-child { margin-bottom: 0; }
-
-  .callout ul { margin: 12px 0; padding-left: 22px; }
-  .callout li { margin-bottom: 6px; }
+  /* .dj-callout / .dj-callout-danger come from djaunt-branding's components/callout/callout.css, linked above. */
+  .dj-callout { margin-top: 28px; }
 
   /* ---------- Numbered method ---------- */
   /* .dj-steps / .dj-step come from djaunt-branding's components/steps/steps.css, linked above. */
@@ -523,7 +505,7 @@
     nav.index, #filter, .pot-form, .btn-text-danger, #assistant, .hero-mark { display: none; }
     body { background: white; color: #111; }
     section { border-bottom: 1px solid #ccc; }
-    .callout { border-left-color: #000; }
+    .dj-callout { border-left-color: #000; }
   }
 </style>
 </head>
@@ -617,7 +599,7 @@
       <h2>Kidney beans need one extra step</h2>
       <p class="lede">This is the one rule in bean cooking that actually matters for safety, not just texture.</p>
 
-      <div class="callout">
+      <div class="dj-callout dj-callout-danger">
         <h3>Boil kidney beans hard for 10 minutes before you simmer them</h3>
         <p>Raw and undercooked <strong>kidney beans</strong> — red and white (cannellini) — contain a natural toxin called phytohaemagglutinin. Eating just a handful of raw or improperly cooked kidney beans can cause severe nausea, vomiting, and diarrhea within a few hours.</p>
         <ul>
