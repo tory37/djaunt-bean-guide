@@ -21,6 +21,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="brand/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/buttons/buttons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/steps/steps.css">
 <style>
   :root {
     --max: 760px;
@@ -194,43 +196,8 @@
   .callout li { margin-bottom: 6px; }
 
   /* ---------- Numbered method ---------- */
-
-  .method { counter-reset: step; margin-top: 30px; }
-
-  .step {
-    counter-increment: step;
-    position: relative;
-    padding: 0 0 30px 52px;
-    border-left: var(--dj-border-width) solid var(--dj-border);
-    margin-left: 17px;
-  }
-  .step:last-child { border-left-color: transparent; padding-bottom: 0; }
-
-  .step::before {
-    content: counter(step);
-    font-family: var(--dj-font-display);
-    font-weight: 700;
-    position: absolute;
-    left: -18px;
-    top: -2px;
-    width: 34px;
-    height: 34px;
-    background: var(--dj-bg);
-    border: var(--dj-border-width) solid var(--dj-accent);
-    color: var(--dj-accent);
-    border-radius: var(--dj-radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-  }
-
-  .step h3 { font-size: 1.15rem; margin-bottom: 6px; }
-  .step p, .step ul { margin: 0 0 10px; color: var(--dj-text-muted); }
-  .step p:last-child, .step ul:last-child { margin-bottom: 0; }
-  .step ul { padding-left: 20px; }
-  .step li { margin-bottom: 4px; }
-  .step strong { color: var(--dj-text); }
+  /* .dj-steps / .dj-step come from djaunt-branding's components/steps/steps.css, linked above. */
+  .dj-steps { margin-top: 30px; }
 
   /* ---------- Table ---------- */
 
@@ -369,35 +336,8 @@
 
   /* ---------- Cooking assistant ---------- */
 
-  .btn {
-    font-family: var(--dj-font-body);
-    font-size: 14.5px;
-    font-weight: 600;
-    padding: 10px 18px;
-    border-radius: var(--dj-radius-md);
-    border: var(--dj-border-width) solid var(--dj-border);
-    background: var(--dj-surface);
-    color: var(--dj-text);
-    cursor: pointer;
-    line-height: 1.2;
-  }
-  .btn:hover { border-color: var(--dj-accent); color: var(--dj-accent); }
-  .btn-primary { background: var(--dj-accent); border-color: var(--dj-accent); color: var(--dj-on-accent); }
-  .btn-primary:hover { background: var(--dj-accent-hi); border-color: var(--dj-accent-hi); color: var(--dj-on-accent); }
-  .btn-small { padding: 6px 12px; font-size: 13px; }
-
-  .btn-text-danger {
-    font-family: var(--dj-font-body);
-    font-size: 13.5px;
-    background: none;
-    border: none;
-    color: var(--dj-danger);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    cursor: pointer;
-    padding: 6px 4px;
-  }
-  .btn-text-danger:hover { color: #ff6b52; }
+  /* .dj-button / .dj-button-primary / .dj-button-small / .dj-button-text-danger
+     come from djaunt-branding's components/buttons/buttons.css, linked above. */
 
   .pot-form {
     background: var(--dj-surface);
@@ -660,8 +600,8 @@
           </div>
         </div>
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Add pot</button>
-          <button type="button" id="clear-pots" class="btn-text-danger" hidden>Clear all pots</button>
+          <button type="submit" class="dj-button dj-button-primary">Add pot</button>
+          <button type="button" id="clear-pots" class="dj-button-text-danger" hidden>Clear all pots</button>
         </div>
       </form>
 
@@ -696,13 +636,13 @@
       <h2>Five steps, almost any bean</h2>
       <p class="lede">This is the shape of cooking a pot of beans from dried. The reference table further down fills in the specific times per variety.</p>
 
-      <div class="method">
-        <div class="step">
+      <div class="dj-steps">
+        <div class="dj-step">
           <h3>Sort and rinse</h3>
           <p>Spread the dry beans out and pick through for small stones, shriveled beans, or debris — bags of dried beans aren't always fully cleaned. Rinse under cold water until it runs clear.</p>
         </div>
 
-        <div class="step">
+        <div class="dj-step">
           <h3>Soak (most beans, not all)</h3>
           <p>Soaking shortens the cooking time and helps beans cook more evenly. Two ways to do it:</p>
           <ul>
@@ -712,17 +652,17 @@
           <p>Lentils, split peas, mung beans, and black-eyed peas cook fine with no soak at all — see the table for which is which. Skipping the soak on other beans isn't dangerous, it just means a longer simmer and a bit more gas.</p>
         </div>
 
-        <div class="step">
+        <div class="dj-step">
           <h3>Boil hard, then simmer</h3>
           <p>Cover the soaked beans with fresh water (not the soaking water — this cuts down on the gas-causing compounds that leached out overnight), by about 2 inches. Bring to a full boil for 10 minutes — mandatory for kidney beans, good habit for everything else — then reduce to a gentle simmer, partially covered. Skim off any foam that rises in the first few minutes.</p>
         </div>
 
-        <div class="step">
+        <div class="dj-step">
           <h3>Season the pot as it cooks</h3>
           <p>Add your aromatics (onion, garlic, bay leaf, a glug of oil) at the start of the simmer. Salt is fine to add early — it seasons the beans as they cook and doesn't toughen them. Hold off on anything acidic — tomatoes, vinegar, wine, citrus — until the beans are already tender; acid slows down softening.</p>
         </div>
 
-        <div class="step">
+        <div class="dj-step">
           <h3>Check doneness, then rest</h3>
           <p>A done bean is fully creamy all the way through — no chalky or crunchy center, no raw starchy taste. Start checking at the low end of the time range and taste every 5–10 minutes after that. Letting beans sit in their hot cooking liquid for 10–15 minutes off the heat before serving rounds them out and helps the skins hold together.</p>
         </div>
@@ -1205,7 +1145,7 @@
 
         const resetBtn = document.createElement('button');
         resetBtn.type = 'button';
-        resetBtn.className = 'btn btn-small';
+        resetBtn.className = 'dj-button dj-button-small';
         resetBtn.textContent = 'Reset timer';
         resetBtn.addEventListener('click', () => {
           step.startedAt = null;
@@ -1224,7 +1164,7 @@
 
         const startBtn = document.createElement('button');
         startBtn.type = 'button';
-        startBtn.className = 'btn btn-primary btn-small';
+        startBtn.className = 'dj-button dj-button-primary dj-button-small';
         startBtn.textContent = 'Start timer';
         startBtn.addEventListener('click', () => {
           unlockAudio();
