@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/buttons/buttons.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/steps/steps.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/callout/callout.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/progress/progress.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/badge/badge.css">
 <style>
   :root {
     --max: 760px;
@@ -242,16 +244,6 @@
   td.note { color: var(--dj-text-muted); font-size: 14px; }
 
   .flag {
-    display: inline-block;
-    font-family: var(--dj-font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--dj-danger);
-    border: var(--dj-border-width) solid var(--dj-danger);
-    padding: 1px 6px;
-    border-radius: var(--dj-radius-sm);
     margin-top: 4px;
   }
 
@@ -389,19 +381,6 @@
 
   .pot-meta { font-size: 12.5px; color: var(--dj-text-muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 
-  .method-badge {
-    display: inline-block;
-    font-family: var(--dj-font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    padding: 2px 8px;
-    border-radius: var(--dj-radius-sm);
-    border: var(--dj-border-width) solid var(--dj-accent-deep);
-    color: var(--dj-accent);
-    white-space: nowrap;
-  }
 
   .pot-remove {
     background: none;
@@ -416,9 +395,7 @@
   }
   .pot-remove:hover { color: var(--dj-danger); }
 
-  .pot-progress { font-size: 13px; color: var(--dj-text-muted); margin: 10px 0 2px; }
-  .pot-progress-bar { background: var(--dj-surface-raised); border-radius: var(--dj-radius-sm); height: 5px; overflow: hidden; margin-top: 6px; }
-  .pot-progress-fill { background: var(--dj-accent); height: 100%; transition: width var(--dj-dur-slow) var(--dj-ease); }
+  .pot-progress { margin: 10px 0 2px; }
 
   .ready-estimate { font-size: 13.5px; color: var(--dj-accent-hi); font-weight: 600; margin: 8px 0 0; }
 
@@ -689,13 +666,13 @@
             <tr>
               <td class="bean-name">Red kidney beans</td>
               <td>Required</td>
-              <td>45–60 min <span class="flag">after 10-min boil</span></td>
+              <td>45–60 min <span class="dj-badge dj-badge-danger flag">after 10-min boil</span></td>
               <td class="note">See the safety note above before cooking these.</td>
             </tr>
             <tr>
               <td class="bean-name">White kidney beans (cannellini)</td>
               <td>Recommended</td>
-              <td>45–60 min <span class="flag">after 10-min boil</span></td>
+              <td>45–60 min <span class="dj-badge dj-badge-danger flag">after 10-min boil</span></td>
               <td class="note">Creamy with a thin skin; good in soups.</td>
             </tr>
             <tr>
@@ -1197,7 +1174,7 @@
     const meta = document.createElement('div');
     meta.className = 'pot-meta';
     const badge = document.createElement('span');
-    badge.className = 'method-badge';
+    badge.className = 'dj-badge dj-badge-accent';
     badge.textContent = METHOD_LABEL[pot.method];
     meta.appendChild(badge);
     const beanName = document.createElement('span');
@@ -1223,11 +1200,14 @@
     const doneCount = pot.steps.filter(s => s.done).length;
     const progress = document.createElement('div');
     progress.className = 'pot-progress';
-    progress.textContent = `Step ${Math.min(doneCount + 1, pot.steps.length)} of ${pot.steps.length}`;
+    const progressLabel = document.createElement('div');
+    progressLabel.className = 'dj-bar-label';
+    progressLabel.textContent = `Step ${Math.min(doneCount + 1, pot.steps.length)} of ${pot.steps.length}`;
+    progress.appendChild(progressLabel);
     const bar = document.createElement('div');
-    bar.className = 'pot-progress-bar';
+    bar.className = 'dj-bar-track';
     const fill = document.createElement('div');
-    fill.className = 'pot-progress-fill';
+    fill.className = 'dj-bar-fill';
     fill.style.width = `${Math.round((doneCount / pot.steps.length) * 100)}%`;
     bar.appendChild(fill);
     progress.appendChild(bar);
