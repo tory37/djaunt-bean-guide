@@ -26,6 +26,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/callout/callout.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/progress/progress.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/badge/badge.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/section-nav/section-nav.css">
+<script src="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/section-nav/section-nav.js" defer></script>
 <style>
   :root {
     --max: 760px;
@@ -130,37 +132,16 @@
 
   /* ---------- Index nav ---------- */
 
-  nav.index {
-    padding: 22px 0;
-    border-bottom: var(--dj-border-width) solid var(--dj-border);
-  }
-
-  nav.index ol {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .dj-section-nav .wrap {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px 0;
-    font-size: 14.5px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: var(--dj-space-5);
   }
-
-  nav.index li:not(:last-child)::after {
-    content: "·";
-    color: var(--dj-border);
-    margin: 0 10px;
-  }
-
-  nav.index a {
-    color: var(--dj-text-muted);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-  }
-  nav.index a:hover { color: var(--dj-accent); border-bottom-color: var(--dj-accent); }
 
   /* ---------- Sections ---------- */
 
-  section { padding: 52px 0; border-bottom: var(--dj-border-width) solid var(--dj-border); }
+  section { padding: 52px 0; border-bottom: var(--dj-border-width) solid var(--dj-border); scroll-margin-top: 56px; }
   section:last-of-type { border-bottom: none; }
 
   section > .eyebrow {
@@ -479,7 +460,7 @@
   .footer-brand .dj-mark { width: 16px; height: 16px; color: var(--dj-accent); }
 
   @media print {
-    nav.index, #filter, .pot-form, .btn-text-danger, #assistant, .hero-mark { display: none; }
+    .dj-section-nav, #filter, .pot-form, .btn-text-danger, #assistant, .hero-mark { display: none; }
     body { background: white; color: #111; }
     section { border-bottom: 1px solid #ccc; }
     .dj-callout { border-left-color: #000; }
@@ -500,17 +481,15 @@
   </div>
 </header>
 
-<nav class="index" aria-label="Section index">
+<nav class="dj-section-nav" aria-label="Section index">
   <div class="wrap">
-    <ol>
-      <li><a href="#assistant">Cooking assistant</a></li>
-      <li><a href="#safety">Safety first</a></li>
-      <li><a href="#method">The master method</a></li>
-      <li><a href="#times">Cooking times by bean</a></li>
-      <li><a href="#base">Flavor base</a></li>
-      <li><a href="#storage">Storage</a></li>
-      <li><a href="#troubleshooting">Troubleshooting</a></li>
-    </ol>
+    <a class="dj-section-nav-link" href="#assistant" data-dj-nav-target="assistant">Cooking assistant</a>
+    <a class="dj-section-nav-link" href="#safety" data-dj-nav-target="safety">Safety first</a>
+    <a class="dj-section-nav-link" href="#method" data-dj-nav-target="method">The master method</a>
+    <a class="dj-section-nav-link" href="#times" data-dj-nav-target="times">Cooking times by bean</a>
+    <a class="dj-section-nav-link" href="#base" data-dj-nav-target="base">Flavor base</a>
+    <a class="dj-section-nav-link" href="#storage" data-dj-nav-target="storage">Storage</a>
+    <a class="dj-section-nav-link" href="#troubleshooting" data-dj-nav-target="troubleshooting">Troubleshooting</a>
   </div>
 </nav>
 
