@@ -572,7 +572,7 @@
             <li><strong>Long soak:</strong> cover with cold water, about 3–4 cups of water per cup of beans, and let sit 8–24 hours at room temperature (refrigerate if your kitchen runs warm, or if you're soaking longer than 8 hours). Drain and rinse before cooking.</li>
             <li><strong>Quick soak:</strong> cover with water, bring to a boil for 2–3 minutes, take off the heat, cover, and let stand for 1 hour. Drain and rinse.</li>
           </ul>
-          <p>Lentils, split peas, mung beans, and black-eyed peas cook fine with no soak at all — see the table for which is which. Skipping the soak on other beans isn't dangerous, it just means a longer simmer and a bit more gas.</p>
+          <p>Lentils, split peas, and black-eyed peas cook fine with no soak at all — see the table for which is which. Skipping the soak on other beans isn't dangerous on the stovetop, it just means a longer simmer and a bit more gas; the cooking assistant below asks for a soak on a couple of beans (including mung) where we don't have solid timing data for skipping it, especially under pressure.</p>
         </div>
 
         <div class="dj-step">
@@ -637,7 +637,7 @@
             </tr>
             <tr>
               <td class="bean-name">White kidney beans (cannellini)</td>
-              <td>Recommended</td>
+              <td>Required</td>
               <td>45–60 min <span class="dj-badge dj-badge-danger flag">after 10-min boil</span></td>
               <td class="note">Creamy with a thin skin; good in soups.</td>
             </tr>
@@ -697,9 +697,9 @@
             </tr>
             <tr>
               <td class="bean-name">Mung beans</td>
-              <td>Optional</td>
+              <td>Required</td>
               <td>30–45 min</td>
-              <td class="note">Soft and mild; soaking shortens the time but isn't required.</td>
+              <td class="note">Soft and mild; cooks fast enough dry that we don't have solid pressure-cooker timing for skipping the soak, so the assistant asks for one.</td>
             </tr>
           </tbody>
         </table>
@@ -832,7 +832,7 @@
     { id: 'black',       name: 'Black beans',                       soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: { soaked: [7, 10],  unsoaked: [20, 25] }, slow: { low: [7, 8],  high: [3.5, 4.5] } },
     { id: 'pinto',       name: 'Pinto beans',                       soak: 'recommended', preBoil: false, simmer: [60, 90],  pc: { soaked: [13, 17], unsoaked: [32, 38] }, slow: { low: [7, 8],  high: [4, 5] } },
     { id: 'kidney-red',  name: 'Red kidney beans',                  soak: 'required',    preBoil: true,  simmer: [45, 60],  pc: { soaked: [25, 30], unsoaked: [25, 30] }, slow: { low: [7, 8],  high: [3.5, 4.5] } },
-    { id: 'kidney-white', name: 'White kidney beans (cannellini)',  soak: 'recommended', preBoil: true,  simmer: [45, 60],  pc: { soaked: [8, 12],  unsoaked: [20, 25] }, slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'kidney-white', name: 'White kidney beans (cannellini)',  soak: 'required',    preBoil: true,  simmer: [45, 60],  pc: { soaked: [8, 12],  unsoaked: [8, 12] },  slow: { low: [7, 8],  high: [3.5, 4.5] } },
     { id: 'great-northern', name: 'Great Northern beans',           soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: { soaked: [20, 25], unsoaked: [32, 36] }, slow: { low: [7, 8],  high: [3.5, 4.5] } },
     { id: 'navy',        name: 'Navy beans',                        soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: { soaked: [12, 16], unsoaked: [25, 30] }, slow: { low: [7, 8],  high: [4, 4.5] } },
     { id: 'chickpea',    name: 'Chickpeas (garbanzo)',               soak: 'recommended', preBoil: false, simmer: [60, 120], pc: { soaked: [10, 15], unsoaked: [35, 40] }, slow: { low: [8, 9],  high: [4, 5] }, foamProne: true },
@@ -842,7 +842,7 @@
     { id: 'adzuki',      name: 'Adzuki beans',                      soak: 'optional',    preBoil: false, simmer: [45, 60],  pc: { soaked: [6, 10],  unsoaked: [20, 25] }, slow: { low: [7, 8],  high: [3.5, 4.5] } },
     { id: 'lentil',      name: 'Lentils (brown/green)',             soak: 'none',        preBoil: false, simmer: [20, 30],  pc: { soaked: [8, 10],  unsoaked: [8, 10] },  slow: { low: [4, 6],  high: [2, 3] }, mushWarning: true },
     { id: 'splitpea',    name: 'Split peas',                        soak: 'none',        preBoil: false, simmer: [45, 60],  pc: { soaked: [10, 15], unsoaked: [10, 15] }, slow: { low: [6, 8],  high: [3, 4] }, foamProne: true },
-    { id: 'mung',        name: 'Mung beans',                        soak: 'optional',    preBoil: false, simmer: [30, 45],  pc: { soaked: [15, 20], unsoaked: [20, 26] }, slow: { low: [4, 6],  high: [2, 3] }, mushWarning: true },
+    { id: 'mung',        name: 'Mung beans',                        soak: 'required',    preBoil: false, simmer: [30, 45],  pc: { soaked: [15, 20], unsoaked: [15, 20] }, slow: { low: [4, 6],  high: [2, 3] }, mushWarning: true },
   ];
   const beanById = id => BEANS.find(b => b.id === id);
 
