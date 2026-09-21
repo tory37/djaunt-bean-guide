@@ -704,7 +704,7 @@
           </tbody>
         </table>
       </div>
-      <p class="table-note">Using a pressure cooker or Instant Pot? Skip the soak entirely and expect roughly a third to half the simmer time above at high pressure, with a natural release. Times still vary by machine, so check a couple minutes early the first time you try a new bean.</p>
+      <p class="table-note">Using a pressure cooker or Instant Pot? You still don't have to skip the soak — soaked beans usually pressure-cook in well under half the time unsoaked ones need, and skipping the soak leaves more of the gas-causing sugars behind. Either way, times vary by machine and batch, so check a couple minutes early the first time you try a new bean.</p>
     </div>
   </section>
 
@@ -822,22 +822,27 @@
   // preBoil: true means the 10-minute hard boil is mandatory (kidney beans), not just good habit
   // mushWarning: quick-cooking beans that can break down to porridge over an unattended slow cook
   // foamProne: starchy beans that foam heavily under pressure and can clog a pressure cooker's steam valve
-  // simmer / pc times in minutes; slow-cooker times in hours
+  // simmer times in minutes (soaked vs skip-soak covered by simmerRangeFor/simmerUnsoaked).
+  // pc.soaked / pc.unsoaked: pressure-cook minutes for a soaked vs. skip-the-soak start — these
+  // genuinely differ (often 2-3x), unlike simmer, which is why they're split here. Beans where
+  // soak is 'required' or 'none' never offer the skip plan, so soaked/unsoaked are just the same
+  // pair for those — the unsoaked side is unreachable, kept only so every bean has one shape.
+  // slow-cooker times in hours (not split soaked/unsoaked — see the skip-soak warning instead).
   const BEANS = [
-    { id: 'black',       name: 'Black beans',                       soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: [20, 25], slow: { low: [7, 8],  high: [3.5, 4.5] } },
-    { id: 'pinto',       name: 'Pinto beans',                       soak: 'recommended', preBoil: false, simmer: [60, 90],  pc: [25, 30], slow: { low: [7, 8],  high: [4, 5] } },
-    { id: 'kidney-red',  name: 'Red kidney beans',                  soak: 'required',    preBoil: true,  simmer: [45, 60],  pc: [25, 30], slow: { low: [7, 8],  high: [3.5, 4.5] } },
-    { id: 'kidney-white', name: 'White kidney beans (cannellini)',  soak: 'recommended', preBoil: true,  simmer: [45, 60],  pc: [20, 25], slow: { low: [7, 8],  high: [3.5, 4.5] } },
-    { id: 'great-northern', name: 'Great Northern beans',           soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: [20, 25], slow: { low: [7, 8],  high: [3.5, 4.5] } },
-    { id: 'navy',        name: 'Navy beans',                        soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: [25, 30], slow: { low: [7, 8],  high: [4, 4.5] } },
-    { id: 'chickpea',    name: 'Chickpeas (garbanzo)',               soak: 'recommended', preBoil: false, simmer: [60, 120], pc: [35, 40], slow: { low: [8, 9],  high: [4, 5] }, foamProne: true },
-    { id: 'blackeyed',   name: 'Black-eyed peas',                   soak: 'optional',    preBoil: false, simmer: [30, 45], simmerUnsoaked: [45, 60], pc: [15, 20], slow: { low: [6, 7],  high: [3, 3.5] } },
-    { id: 'lima',        name: 'Lima beans',                        soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: [15, 20], slow: { low: [6, 7],  high: [3, 3.5] } },
-    { id: 'fava',        name: 'Fava beans (dried, peeled)',        soak: 'required',    preBoil: false, simmer: [40, 50],  pc: [15, 20], slow: { low: [6, 7],  high: [3, 3.5] } },
-    { id: 'adzuki',      name: 'Adzuki beans',                      soak: 'optional',    preBoil: false, simmer: [45, 60],  pc: [20, 25], slow: { low: [7, 8],  high: [3.5, 4.5] } },
-    { id: 'lentil',      name: 'Lentils (brown/green)',             soak: 'none',        preBoil: false, simmer: [20, 30],  pc: [8, 10],  slow: { low: [4, 6],  high: [2, 3] }, mushWarning: true },
-    { id: 'splitpea',    name: 'Split peas',                        soak: 'none',        preBoil: false, simmer: [45, 60],  pc: [10, 15], slow: { low: [6, 8],  high: [3, 4] }, foamProne: true },
-    { id: 'mung',        name: 'Mung beans',                        soak: 'optional',    preBoil: false, simmer: [30, 45],  pc: [15, 20], slow: { low: [4, 6],  high: [2, 3] }, mushWarning: true },
+    { id: 'black',       name: 'Black beans',                       soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: { soaked: [7, 10],  unsoaked: [20, 25] }, slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'pinto',       name: 'Pinto beans',                       soak: 'recommended', preBoil: false, simmer: [60, 90],  pc: { soaked: [13, 17], unsoaked: [32, 38] }, slow: { low: [7, 8],  high: [4, 5] } },
+    { id: 'kidney-red',  name: 'Red kidney beans',                  soak: 'required',    preBoil: true,  simmer: [45, 60],  pc: { soaked: [25, 30], unsoaked: [25, 30] }, slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'kidney-white', name: 'White kidney beans (cannellini)',  soak: 'recommended', preBoil: true,  simmer: [45, 60],  pc: { soaked: [8, 12],  unsoaked: [20, 25] }, slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'great-northern', name: 'Great Northern beans',           soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: { soaked: [20, 25], unsoaked: [32, 36] }, slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'navy',        name: 'Navy beans',                        soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: { soaked: [12, 16], unsoaked: [25, 30] }, slow: { low: [7, 8],  high: [4, 4.5] } },
+    { id: 'chickpea',    name: 'Chickpeas (garbanzo)',               soak: 'recommended', preBoil: false, simmer: [60, 120], pc: { soaked: [10, 15], unsoaked: [35, 40] }, slow: { low: [8, 9],  high: [4, 5] }, foamProne: true },
+    { id: 'blackeyed',   name: 'Black-eyed peas',                   soak: 'optional',    preBoil: false, simmer: [30, 45], simmerUnsoaked: [45, 60], pc: { soaked: [15, 20], unsoaked: [20, 28] }, slow: { low: [6, 7],  high: [3, 3.5] } },
+    { id: 'lima',        name: 'Lima beans',                        soak: 'recommended', preBoil: false, simmer: [45, 60],  pc: { soaked: [15, 20], unsoaked: [25, 30] }, slow: { low: [6, 7],  high: [3, 3.5] } },
+    { id: 'fava',        name: 'Fava beans (dried, peeled)',        soak: 'required',    preBoil: false, simmer: [40, 50],  pc: { soaked: [15, 20], unsoaked: [15, 20] }, slow: { low: [6, 7],  high: [3, 3.5] } },
+    { id: 'adzuki',      name: 'Adzuki beans',                      soak: 'optional',    preBoil: false, simmer: [45, 60],  pc: { soaked: [6, 10],  unsoaked: [20, 25] }, slow: { low: [7, 8],  high: [3.5, 4.5] } },
+    { id: 'lentil',      name: 'Lentils (brown/green)',             soak: 'none',        preBoil: false, simmer: [20, 30],  pc: { soaked: [8, 10],  unsoaked: [8, 10] },  slow: { low: [4, 6],  high: [2, 3] }, mushWarning: true },
+    { id: 'splitpea',    name: 'Split peas',                        soak: 'none',        preBoil: false, simmer: [45, 60],  pc: { soaked: [10, 15], unsoaked: [10, 15] }, slow: { low: [6, 8],  high: [3, 4] }, foamProne: true },
+    { id: 'mung',        name: 'Mung beans',                        soak: 'optional',    preBoil: false, simmer: [30, 45],  pc: { soaked: [15, 20], unsoaked: [20, 26] }, slow: { low: [4, 6],  high: [2, 3] }, mushWarning: true },
   ];
   const beanById = id => BEANS.find(b => b.id === id);
 
@@ -936,8 +941,8 @@
 
     if (soakPlan === 'skip') {
       let text = 'Skipping the soak leaves more of the natural sugars that cause gas — even a short soak rinses a good deal of that away.';
-      if (method !== 'stovetop') {
-        text += ' The times above assume soaked beans, so an unsoaked cook will run longer than shown — lean on tasting, not the clock.';
+      if (method === 'slow') {
+        text += ' The slow-cooker time above assumes soaked beans and isn’t adjusted for skipping it, so lean on tasting rather than the clock.';
       }
       warnings.push({ level: 'warning', tag: 'Heads up', text });
     }
@@ -1018,8 +1023,8 @@
       add('rest', 'Rest', 'Turn off the heat and let the beans sit in their cooking liquid for 10–15 minutes before serving.', 10, { rangeMax: 15 });
     } else if (method === 'pressure') {
       add('preboil', preBoilTitle, preBoilDesc, 10, { required });
-      const [lo, hi] = bean.pc;
-      add('cook', 'Seal and cook at high pressure', `Add fresh water to cover, seal the lid, and cook at high pressure. Use a natural release (let pressure drop on its own) for creamier, more intact beans; quick-release if you're in a hurry, though beans may split more.`, lo, { rangeMax: hi });
+      const [lo, hi] = soakPlan === 'skip' ? bean.pc.unsoaked : bean.pc.soaked;
+      add('cook', 'Seal and cook at high pressure', `Add fresh water to cover, seal the lid, and cook at high pressure. Use a natural release (let pressure drop on its own) for creamier, more intact beans; quick-release if you're in a hurry, though beans may split more. If they're still firm once the pressure's down, reseal and cook a few minutes more.`, lo, { rangeMax: hi });
       add('release', 'Natural release', 'Let the pressure drop on its own before opening the lid.', 10, { rangeMax: 15 });
     } else {
       add('preboil', preBoilTitle, preBoilDesc, 10, { required });
