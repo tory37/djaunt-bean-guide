@@ -28,6 +28,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/badge/badge.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/section-nav/section-nav.css">
 <script src="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/section-nav/section-nav.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/hero/hero.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/data-table/data-table.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/empty-state/empty-state.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/filter-bar/filter-bar.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tory37/djaunt-branding@main/components/divided-list/divided-list.css">
 <style>
   :root {
     --max: 760px;
@@ -73,12 +78,8 @@
 
   /* ---------- Header / hero ---------- */
 
-  header.hero {
-    position: relative;
-    padding: 64px 0 40px;
-    border-bottom: var(--dj-border-width) solid var(--dj-border);
-    overflow: hidden;
-  }
+  /* .dj-hero comes from djaunt-branding's components/hero/hero.css, linked above. */
+  .dj-hero { padding-bottom: 40px; }
 
   .dj-mark {
     display: inline-block;
@@ -87,16 +88,13 @@
             mask: url('brand/djaunt-icon.svg') no-repeat center / contain;
   }
 
-  .hero-mark {
-    position: absolute;
+  .dj-hero-mark {
     top: -8%;
     right: -6%;
     width: 46%;
-    max-width: 420px;
     aspect-ratio: 1;
+    transform: none;
     color: var(--dj-accent);
-    opacity: 0.06;
-    pointer-events: none;
   }
 
   .brand-row {
@@ -122,13 +120,8 @@
     font-style: normal;
   }
 
-  .hero-sub {
-    font-size: 1.15rem;
-    color: var(--dj-text-muted);
-    max-width: 58ch;
-    margin: 18px 0 0;
-    position: relative;
-  }
+  /* .dj-hero-lede comes from djaunt-branding's components/hero/hero.css, linked above. */
+  .dj-hero-lede { font-size: 1.15rem; max-width: 58ch; margin: 18px 0 0; }
 
   /* ---------- Index nav ---------- */
 
@@ -166,60 +159,15 @@
 
   /* ---------- Table ---------- */
 
-  .table-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin: 26px 0 14px;
-  }
+  /* .dj-filter-bar comes from djaunt-branding's components/filter-bar/filter-bar.css, linked above. */
+  .dj-filter-bar { gap: 16px; margin: 26px 0 14px; }
 
-  #filter {
-    font-family: var(--dj-font-body);
-    font-size: 14.5px;
-    padding: 9px 14px;
-    border: var(--dj-border-width) solid var(--dj-border);
-    background: var(--dj-surface);
-    color: var(--dj-text);
-    border-radius: var(--dj-radius-sm);
-    min-width: 220px;
-  }
-  #filter::placeholder { color: var(--dj-text-muted); }
-  #filter:focus-visible { outline: 2px solid var(--dj-accent); outline-offset: 1px; }
-
-  .table-scroll { overflow-x: auto; border: var(--dj-border-width) solid var(--dj-border); border-radius: var(--dj-radius-md); }
-
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    min-width: 620px;
-    font-size: 15px;
-    background: var(--dj-surface);
-  }
-
-  thead th {
-    text-align: left;
-    font-family: var(--dj-font-mono);
-    font-weight: 500;
-    font-size: 11.5px;
-    text-transform: uppercase;
-    letter-spacing: var(--dj-tracking-label);
-    color: var(--dj-text-muted);
-    background: var(--dj-surface-raised);
-    padding: 12px 16px;
-    border-bottom: var(--dj-border-width) solid var(--dj-border);
-    white-space: nowrap;
-  }
-
-  tbody td {
-    padding: 12px 16px;
-    border-bottom: var(--dj-border-width) solid var(--dj-border);
-    vertical-align: top;
-  }
-
-  tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover { background: var(--dj-surface-raised); }
+  /* .dj-table-scroll / .dj-table come from djaunt-branding's components/data-table/data-table.css, linked above. */
+  .dj-table-scroll { border: var(--dj-border-width) solid var(--dj-border); border-radius: var(--dj-radius-md); }
+  .dj-table { background: var(--dj-surface); min-width: 620px; }
+  .dj-table thead th { font-weight: 500; background: var(--dj-surface-raised); }
+  .dj-table tbody td { vertical-align: top; }
+  .dj-table tbody tr:hover td { background: var(--dj-surface-raised); }
 
   td.bean-name { font-weight: 600; white-space: nowrap; }
   td.note { color: var(--dj-text-muted); font-size: 14px; }
@@ -283,11 +231,10 @@
 
   /* ---------- Troubleshooting ---------- */
 
+  /* .dj-divided-list / .dj-divided-item come from djaunt-branding's components/divided-list/divided-list.css, linked above. */
   .qa { margin-top: 26px; }
-  .qa-item { padding: 18px 0; border-bottom: var(--dj-border-width) solid var(--dj-border); }
-  .qa-item:last-child { border-bottom: none; }
-  .qa-item h3 { font-size: 1.02rem; font-family: var(--dj-font-body); font-weight: 600; margin-bottom: 6px; }
-  .qa-item p { color: var(--dj-text-muted); margin: 0; }
+  .dj-divided-item h3 { font-size: 1.02rem; font-family: var(--dj-font-body); font-weight: 600; }
+  .dj-divided-item p { margin: 0; }
 
   /* ---------- Cooking assistant ---------- */
 
@@ -330,7 +277,7 @@
 
   .form-actions { display: flex; align-items: center; gap: 18px; margin-top: 20px; flex-wrap: wrap; }
 
-  .pots-empty { color: var(--dj-text-muted); font-size: 15px; font-style: italic; margin: 28px 0 0; }
+  /* .dj-empty-state comes from djaunt-branding's components/empty-state/empty-state.css, linked above. */
 
   .pots-grid {
     display: grid;
@@ -460,7 +407,7 @@
   .footer-brand .dj-mark { width: 16px; height: 16px; color: var(--dj-accent); }
 
   @media print {
-    .dj-section-nav, #filter, .pot-form, .btn-text-danger, #assistant, .hero-mark { display: none; }
+    .dj-section-nav, #filter, .pot-form, .btn-text-danger, #assistant, .dj-hero-mark { display: none; }
     body { background: white; color: #111; }
     section { border-bottom: 1px solid #ccc; }
     .dj-callout { border-left-color: #000; }
@@ -469,15 +416,15 @@
 </head>
 <body>
 
-<header class="hero">
-  <div class="hero-mark dj-mark" aria-hidden="true"></div>
+<header class="dj-hero">
+  <div class="dj-hero-mark dj-mark" aria-hidden="true"></div>
   <div class="wrap">
     <div class="brand-row">
       <span class="dj-mark" aria-hidden="true"></span>
       <p class="kicker">A Djaunt field guide</p>
     </div>
     <h1>How to cook any bean</h1>
-    <p class="hero-sub">One method covers almost every dried bean in the pantry — sort, soak, boil, simmer. Below: a cooking assistant that builds a timed, step-by-step plan for as many pots as you're running at once, which beans need soaking, the ten-minute step that makes kidney beans safe to eat, and a plain onion-and-garlic base that works underneath all of it.</p>
+    <p class="dj-hero-lede">One method covers almost every dried bean in the pantry — sort, soak, boil, simmer. Below: a cooking assistant that builds a timed, step-by-step plan for as many pots as you're running at once, which beans need soaking, the ten-minute step that makes kidney beans safe to eat, and a plain onion-and-garlic base that works underneath all of it.</p>
   </div>
 </header>
 
@@ -543,7 +490,7 @@
         </div>
       </form>
 
-      <p id="pots-empty" class="pots-empty">No pots yet — add one above to get started.</p>
+      <p id="pots-empty" class="dj-empty-state" hidden>No pots yet — add one above to get started.</p>
       <div id="pots" class="pots-grid" aria-live="polite"></div>
       <p class="table-note">Times here are planning estimates built from the reference table below — always confirm doneness by tasting, not just the clock. Timers keep running from the moment you start them, even across a page reload; leave the tab open (or come back to it) to get a sound and, if you allow it, a browser notification when a step is ready to check.</p>
     </div>
@@ -614,13 +561,15 @@
       <h2>Cooking times by bean</h2>
       <p class="lede">Simmer times below start once the pot is soaked, boiled hard, and dropped to a simmer. Ranges assume beans bought within the last year; older beans take longer and sometimes never fully soften.</p>
 
-      <div class="table-controls">
+      <div class="table-controls dj-filter-bar">
         <label for="filter" style="font-size:14px; color:var(--dj-text-muted);">Filter the list</label>
-        <input type="text" id="filter" placeholder="Type a bean name…">
+        <div class="dj-filter-field">
+          <input type="text" class="dj-filter-input" id="filter" placeholder="Type a bean name…">
+        </div>
       </div>
 
-      <div class="table-scroll">
-        <table id="bean-table">
+      <div class="dj-table-scroll">
+        <table id="bean-table" class="dj-table">
           <thead>
             <tr>
               <th>Bean</th>
@@ -780,24 +729,24 @@
       <p class="eyebrow">Troubleshooting</p>
       <h2>When beans won't cooperate</h2>
 
-      <div class="qa">
-        <div class="qa-item">
+      <div class="qa dj-divided-list">
+        <div class="dj-divided-item">
           <h3>They've been simmering forever and are still hard</h3>
           <p>Almost always means old beans, or hard (mineral-heavy) water. If your tap water is hard, try switching to filtered water, or add a small pinch of baking soda — about ⅛ teaspoon per cup of dry beans — to the pot. Use it sparingly; too much gives a soapy taste and softens the texture more than you want.</p>
         </div>
-        <div class="qa-item">
+        <div class="dj-divided-item">
           <h3>Should I salt the water?</h3>
           <p>Yes — salting early seasons the beans from the inside and doesn't toughen the skins, despite the old advice. What does slow beans down is acid, so keep tomatoes, vinegar, wine, and citrus out of the pot until the beans are already tender.</p>
         </div>
-        <div class="qa-item">
+        <div class="dj-divided-item">
           <h3>Do I need to skim the foam?</h3>
           <p>Not strictly, but it makes for a cleaner-tasting pot and less mess on the stovetop. It's mostly released starch and surface proteins — skim it off in the first several minutes of the boil, then it tapers off on its own.</p>
         </div>
-        <div class="qa-item">
+        <div class="dj-divided-item">
           <h3>How do I make them less gassy?</h3>
           <p>Soak, and discard the soaking water rather than cooking in it. Cook in fresh water. A strip of kombu simmered in the pot is a traditional aid. Beyond that, it's mostly about your gut adjusting — eating beans regularly, in smaller portions at first, tends to help over time.</p>
         </div>
-        <div class="qa-item">
+        <div class="dj-divided-item">
           <h3>Does altitude matter?</h3>
           <p>Yes — water boils at a lower temperature at higher elevation, so beans take noticeably longer above about 3,000 feet. Add extra simmer time and check for doneness rather than trusting the clock alone.</p>
         </div>
