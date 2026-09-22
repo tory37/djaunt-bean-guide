@@ -600,10 +600,10 @@
       <p class="lede">Simmer times below start once the pot is soaked, boiled hard, and dropped to a simmer. Ranges assume beans bought within the last year; older beans take longer and sometimes never fully soften.</p>
 
       <div class="table-controls dj-filter-bar">
-        <label for="filter" style="font-size:14px; color:var(--dj-text-muted);">Filter the list</label>
         <div class="dj-filter-field">
-          <input type="text" class="dj-filter-input" id="filter" placeholder="Type a bean name…">
+          <input type="text" class="dj-filter-input" id="filter" placeholder="Type a bean name…" aria-label="Filter the list by bean name">
         </div>
+        <span class="dj-filter-count" id="filter-count"></span>
       </div>
 
       <div class="dj-table-scroll">
@@ -704,6 +704,7 @@
           </tbody>
         </table>
       </div>
+      <p class="dj-empty-state" id="table-empty" hidden>No beans match that filter.</p>
       <p class="table-note">Using a pressure cooker or Instant Pot? You still don't have to skip the soak — soaked beans usually pressure-cook in well under half the time unsoaked ones need, and skipping the soak leaves more of the gas-causing sugars behind. Either way, times vary by machine and batch, so check a couple minutes early the first time you try a new bean.</p>
     </div>
   </section>
@@ -803,15 +804,25 @@
 
 <script>
   const filterInput = document.getElementById('filter');
+  const filterCount = document.getElementById('filter-count');
+  const tableEmpty = document.getElementById('table-empty');
   const rows = Array.from(document.querySelectorAll('#bean-table tbody tr'));
 
-  filterInput.addEventListener('input', () => {
+  function updateFilter() {
     const q = filterInput.value.trim().toLowerCase();
+    let shown = 0;
     rows.forEach(row => {
       const name = row.querySelector('.bean-name').textContent.toLowerCase();
-      row.style.display = name.includes(q) ? '' : 'none';
+      const match = name.includes(q);
+      row.style.display = match ? '' : 'none';
+      if (match) shown++;
     });
-  });
+    filterCount.textContent = q ? `${shown} of ${rows.length} beans` : `${rows.length} beans`;
+    tableEmpty.hidden = shown !== 0;
+  }
+
+  filterInput.addEventListener('input', updateFilter);
+  updateFilter();
 </script>
 
 <script>
@@ -1267,7 +1278,7 @@
     const bar = document.createElement('div');
     bar.className = 'dj-bar-track';
     const fill = document.createElement('div');
-    fill.className = 'dj-bar-fill';
+    fill.className = allDone ? 'dj-bar-fill dj-bar-fill-success' : 'dj-bar-fill';
     fill.style.width = `${Math.round((doneCount / pot.steps.length) * 100)}%`;
     bar.appendChild(fill);
     progress.appendChild(bar);
